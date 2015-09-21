@@ -1,0 +1,23 @@
+<ion-view view-title="Equipos">
+  <ion-content>
+    <div class="bar bar-header item-input-inset">
+		<label class="item-input-wrapper">
+		<i class="icon ion-ios-search placeholder-icon"></i>
+		<input type="search" placeholder="Buscar"  ng-model="search">
+		</label>
+		</div>
+
+    <div class="list">
+
+
+    <a ng-repeat="equipo in name | filter:search" class="item item-thumbnail-left" href="#/app/jugadores/{{equipo.id}}">
+      <img src="img/escudos/{{equipo.logo}}">
+      <h2>{{equipo.name}}</h2>
+      <p>{{equipo.code}}</p>
+    </a>
+
+
+
+</div>
+  </ion-content>
+</ion-view>

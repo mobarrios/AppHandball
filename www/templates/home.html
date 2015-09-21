@@ -1,0 +1,57 @@
+<style type="text/css">
+
+	.box
+	{
+		width: 100%;
+		height:50vh;
+	}
+	.box img
+	{
+		width: 100%;
+		height:50vh;
+		opacity: 0.5;
+    	filter: alpha(opacity=50);
+
+	}
+	.logo
+	{
+		margin-left: 10%;
+		padding-top:10%;
+		position: fixed;
+		text-align: center;
+		z-index: 100;
+	}
+</style>
+
+<ion-view view-title="">
+  <ion-content>
+  <div class="logo" >
+  <img src="img/logo.png" width='80%'>
+  </div>
+	
+	<ion-slide-box   auto-play="true"  does-continue="true" class="box">
+		<ion-slide>
+			<img src="img/slide4.jpg">
+		</ion-slide>
+		<ion-slide>
+			<img src="img/slide2.jpg">
+		</ion-slide>
+		<ion-slide>
+			<img src="img/slide5.jpg" >
+		</ion-slide>
+
+	</ion-slide-box>
+
+
+ <div class="col button button-block button-light">main Sponsor</div>
+<div class="row row-bottom">
+  <div class="col button button-block button-light">Sponsor 1</div>
+  <div class="col button button-block button-light">Sponsor 2</div>
+</div>
+<div class="row row-bottom">
+  <div class="col button button-block button-light">Sponsor 3</div>
+  <div class="col button button-block button-light">Sponsor 4</div>
+</div>
+	
+  </ion-content>
+</ion-view>
