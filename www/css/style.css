@@ -113,44 +113,35 @@
     margin-top:40px;
 }
 
-#mapa,#mapa+a{
+#restDescript p{
+    position: relative;
+    padding-left:34px;
+    margin-top:15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+#restDescript i{
+    font-size:1.8em;
+    display: flex;
+    align-items: center;
+    position:absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    color: #389eae;
+}
+
+
+#mapa{
     margin:0 10px;
 }
 
 
-#mapa+a{
-    text-align:center;
+#mapa #map_canvas{
+    width: 100%;
+    height:300px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
