@@ -14,6 +14,7 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
 
     <!-- cordova script (this will be a 404 during development) -->
@@ -35,11 +36,20 @@
 
     </ion-nav-view>
 
+  <script>
+    $(document).ready(function(){
+      var width = $(".logo").css('width');
+      var top = $(".box").css('height');
+      $(".logo").css('height',width);
+      $(".logo").css('top',top/2);
+
+
+    });
+
+  </script>
+
 
 
   </body>
-
-  <script>
-
 
 </html>

@@ -5447,7 +5447,9 @@ a.item-content {
   float: left;
   width: 100%;
   height: 100%;
-  vertical-align: top; }
+  vertical-align: top;
+  margin-bottom:-4px;
+}
 
 .slider-slide-image > img {
   width: 100%; }

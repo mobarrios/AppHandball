@@ -1,32 +1,9 @@
-<style type="text/css">
-
-	.box
-	{
-		width: 100%;
-		height:50vh;
-	}
-	.box img
-	{
-		width: 100%;
-		height:50vh;
-		opacity: 0.5;
-    	filter: alpha(opacity=50);
-
-	}
-	.logo
-	{
-		margin-left: 10%;
-		padding-top:10%;
-		position: fixed;
-		text-align: center;
-		z-index: 100;
-	}
-</style>
-
 <ion-view view-title="">
   <ion-content>
   <div class="logo" >
-  <img src="img/logo.png" width='80%'>
+	  <div>
+  		<img src="img/logo.png">
+	  </div>
   </div>
 	
 	<ion-slide-box   auto-play="true"  does-continue="true" class="box">
@@ -42,16 +19,25 @@
 
 	</ion-slide-box>
 
-
- <div class="col button button-block button-light">main Sponsor</div>
-<div class="row row-bottom">
-  <div class="col button button-block button-light">Sponsor 1</div>
-  <div class="col button button-block button-light">Sponsor 2</div>
-</div>
-<div class="row row-bottom">
-  <div class="col button button-block button-light">Sponsor 3</div>
-  <div class="col button button-block button-light">Sponsor 4</div>
-</div>
+	<div id="sponsors">
+		<div class="col text-center background4" id="sponsorPpal">
+			<img src="http://lorempixel.com/900/118/sports" alt="">
+		</div>
+		<div class="childInline text-center background5">
+			<div class="margin">
+				<img src="http://lorempixel.com/100/100/sports" alt="" class="redondeada">
+			</div>
+			<div class="margin">
+				<img src="http://lorempixel.com/100/100/sports" alt="" class="redondeada">
+			</div>
+			<div class="margin">
+				<img src="http://lorempixel.com/100/100/sports" alt="" class="redondeada">
+			</div>
+			<div class="margin">
+				<img src="http://lorempixel.com/100/100/sports" alt="" class="redondeada">
+		  	</div>
+		</div>
+	</div>
 	
   </ion-content>
 </ion-view>
