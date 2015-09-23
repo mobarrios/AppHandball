@@ -105,3 +105,58 @@
 .childInline>div{
     display: inline-block;
 }
+
+
+/*--------------------         RESTAURANTES         -------------------*/
+#restDescript{
+    margin:0 10px;
+    margin-top:40px;
+}
+
+#mapa,#mapa+a{
+    margin:0 10px;
+}
+
+
+#mapa+a{
+    text-align:center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
