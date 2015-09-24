@@ -66,16 +66,55 @@ angular.module('starter.controllers', [])
 })
 
 .controller('mapController',function($scope){
-  $scope.map = [
-    //{ name: 'El Regional', id : 1 , address:'Avenida San Martín 1201, 8370 San Martin de los Andes, Neuquén', tel:'02972 41-4600'},
-    //{name: 'Ku de los Andes', id :2 ,address:'Av. San Martín 1053, Q8370EJJ San Martin de los Andes, Neuquén', tel:'02972 42-7039'},
-    //{ name: 'Parrilla Patagonia Piscis', id : 3 , address:'Gral. Villegas 598, Q8370EKL San Martin de los Andes, Neuquén', tel:'02972 42-3247'}
-
-
-  ];
+  $scope.map = [];
 })
 
-.controller('equiposController',function($scope, $http){
+.controller('MapController', function($scope, $ionicLoading) {
+
+  google.maps.event.addDomListener(window, 'load', function() {
+    var map = new google.maps.Map(document.getElementById('maps'), {
+      zoom: 16
+    });
+    var geocoder = new google.maps.Geocoder();
+
+    geocodeAddress(geocoder, map);
+
+
+    function geocodeAddress(geocoder, resultsMap) {
+      var address = "Avenida 9 de julio 1966, capital federal";
+
+      geocoder.geocode({'address': address}, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+          resultsMap.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+            map: resultsMap,
+            position: results[0].geometry.location
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
+
+    $scope.map = map;
+  });
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .controller('equiposController',function($scope, $http){
   
         $http.get('http://localhost/sistemas/master/public/ws/content/eyJpdiI6ImFiYjltTno3TjJPWnBcL1JGWkRtV3V3PT0iLCJ2YWx1ZSI6Ik9IYWQ3ZVl3Y3ZIcGpzTktCcDQybFdaaVZCMXNBaFNsM1lwT2FoWGZKVm89IiwibWFjIjoiNDRlY2Y0MGU0OTg4OWQ1NGUzMTZjN2I0ZmI4NTdjMzZiYmNlNjY4YThmODJhMjkyNzA1MTI0N2U5ZjhjYmYwZSJ9').success(function(response){
             $scope.name = response; 
