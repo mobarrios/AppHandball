@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="index_archivos/ionic.css" rel="stylesheet">
+    <link href="index_archivos/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script style="" src="index_archivos/ionic.js"></script>
+    <script src="index_archivos/jquery-1.js"></script>
+    <script src="index_archivos/js"></script>
+    <script src="index_archivos/angular-resource.js"></script>
+
+    <!-- custom -->
+    <script type="text/javascript" src="index_archivos/custom.js"></script>
+
+
+    <!-- GEOLOCATION -->
+    <script type="text/javascript" src="index_archivos/js.js"></script><script src="index_archivos/main.js"></script><script src="index_archivos/adsense.js"></script>
+    <script type="text/javascript" src="index_archivos/mapa.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="index_archivos/cordova.js"></script>
+    <!-- your app's js -->
+    <script src="index_archivos/app.js"></script>
+    <script src="index_archivos/controllers.js"></script>
+
+
+  <script src="index_archivos/common.js" charset="UTF-8" type="text/javascript"></script><script src="index_archivos/util.js" charset="UTF-8" type="text/javascript"></script><script src="index_archivos/stats.js" charset="UTF-8" type="text/javascript"></script></head>
+
+  <body class="grade-a platform-browser platform-macintel platform-ready" ng-app="starter">
+  <div id="map">
+
+  </div>
+
+    <ion-nav-view nav-swipe="" nav-view-direction="none" nav-view-transition="ios" class="view-container">
+
+    <ion-side-menus style="opacity: 1; transform: translate3d(0%, 0px, 0px);" nav-view="active" class="pane view" enable-menu-with-back-views="false">
+  <ion-side-menu-content class="menu-content pane">
+    <ion-nav-bar nav-swipe="" nav-bar-direction="none" nav-bar-transition="ios" class="bar-stable bar-balanced nav-bar-container">
+      <ion-nav-back-button class="hide"></ion-nav-back-button>
+
+      <ion-nav-buttons class="hide" side="left"></ion-nav-buttons>
+      <ion-nav-buttons class="hide" side="right"></ion-nav-buttons>
+    <div nav-bar="cached" class="nav-bar-block"><ion-header-bar align-title="center" class="bar-stable bar-balanced bar bar-header disable-user-behavior"><button class="button back-button hide buttons  button-clear header-item" ng-click="$ionicGoBack()"><i class="icon ion-ios-arrow-back"></i> 
+      <span class="back-text"><span class="default-title">Back</span><span class="previous-title hide"></span></span></button><div class="buttons buttons-left header-item"><span class="left-buttons">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </span></div><div class="title title-center header-item"></div><div class="buttons buttons-right header-item"><span class="right-buttons">
+        <button class="button button-icon  ion-loop" ng-click="update()"></button>
+        
+      </span></div></ion-header-bar></div><div nav-bar="active" class="nav-bar-block"><ion-header-bar align-title="center" class="bar-stable bar-balanced bar bar-header disable-user-behavior"><button class="button back-button hide buttons  button-clear header-item" ng-click="$ionicGoBack()"><i class="icon ion-ios-arrow-back"></i> 
+      <span class="back-text"><span class="default-title">Back</span><span class="previous-title hide"></span></span></button><div class="buttons buttons-left header-item"><span class="left-buttons">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </span></div><div style="left: 58px; right: 58px;" class="title title-center header-item"></div><div class="buttons buttons-right header-item"><span class="right-buttons">
+        <button class="button button-icon  ion-loop" ng-click="update()"></button>
+        
+      </span></div></ion-header-bar></div></ion-nav-bar>
+    
+    <ion-nav-view nav-swipe="" nav-view-direction="none" nav-view-transition="ios" class="view-container" name="menuContent">
+    <ion-view style="opacity: 1; transform: translate3d(0%, 0px, 0px);" nav-view="active" class="pane" view-title="">
+  <ion-content class="scroll-content ionic-scroll  has-header"><div style="transform: translate3d(0px, 0px, 0px) scale(1);" class="scroll">
+  <div class="logo">
+	  <div>
+  		<img src="index_archivos/logo.png">
+	  </div>
+  </div>
+	
+	<div style="visibility: visible;" auto-play="true" does-continue="true" class="box slider"><div style="width: 1236px;" class="slider-slides" ng-transclude="">
+		<ion-slide data-index="0" style="width: 412px; left: 0px; transition-duration: 300ms; transform: translateX(-412px);" class="slider-slide">
+			<img src="index_archivos/slide4.jpg">
+		</ion-slide>
+		<ion-slide data-index="1" style="width: 412px; left: -412px; transition-duration: 300ms; transform: translateX(0px);" class="slider-slide">
+			<img src="index_archivos/slide2.jpg">
+		</ion-slide>
+		<ion-slide data-index="2" style="width: 412px; left: -824px; transition-duration: 0ms; transform: translateX(412px);" class="slider-slide">
+			<img src="index_archivos/slide5.jpg">
+		</ion-slide>
+
+	</div><div class="slider-pager"><!-- ngRepeat: slide in numSlides() track by $index --><span style="" class="slider-pager-page" ng-repeat="slide in numSlides() track by $index" ng-class="{active: $index == currentSlide}" ng-click="pagerClick($index)"><i class="icon ion-record"></i></span><!-- end ngRepeat: slide in numSlides() track by $index --><span class="slider-pager-page active" ng-repeat="slide in numSlides() track by $index" ng-class="{active: $index == currentSlide}" ng-click="pagerClick($index)"><i class="icon ion-record"></i></span><!-- end ngRepeat: slide in numSlides() track by $index --><span class="slider-pager-page" ng-repeat="slide in numSlides() track by $index" ng-class="{active: $index == currentSlide}" ng-click="pagerClick($index)"><i class="icon ion-record"></i></span><!-- end ngRepeat: slide in numSlides() track by $index --></div></div>
+
+	<div id="sponsors">
+		<div class="col text-center background4" id="sponsorPpal">
+			<img src="index_archivos/sports_002.jpg" alt="">
+		</div>
+		<div class="childInline text-center background5">
+			<div class="margin">
+				<img src="index_archivos/sports.jpg" alt="" class="redondeada">
+			</div>
+			<div class="margin">
+				<img src="index_archivos/sports.jpg" alt="" class="redondeada">
+			</div>
+			<div class="margin">
+				<img src="index_archivos/sports.jpg" alt="" class="redondeada">
+			</div>
+			<div class="margin">
+				<img src="index_archivos/sports.jpg" alt="" class="redondeada">
+		  	</div>
+		</div>
+	</div>
+	
+  </div><div class="scroll-bar scroll-bar-v"><div style="transform: translate3d(0px, 0px, 0px) scaleY(1); height: 297px;" class="scroll-bar-indicator scroll-bar-fade-out"></div></div></ion-content>
+</ion-view></ion-nav-view>
+  
+  </ion-side-menu-content>
+
+  <ion-side-menu style="width: 275px;" class="menu menu-left" width="275" is-enabled="true" side="left">
+    <ion-header-bar class="bar-stable bar bar-header disable-user-behavior">
+      <h1 class="title">Menu</h1>
+    </ion-header-bar>
+    <ion-content class="scroll-content ionic-scroll  has-header"><div style="transform: translate3d(0px, 0px, 0px) scale(1);" class="scroll">
+      <ion-list class="disable-user-behavior"><div class="list">
+       
+        <ion-item class="item item-complex" menu-close="" href="#/app/home"><a href="#/app/home" ng-href="#/app/home" class="item-content">
+          <i class="icon ion-home"></i>  Inicio
+        </a></ion-item>
+        <div class="item item-divider">
+         Torneo
+        </div>
+        <ion-item class="item item-complex" menu-close="" href="#/app/torneo"><a href="#/app/torneo" ng-href="#/app/torneo" class="item-content">
+           <i class="icon ion-ios-football-outline"></i> Fixture
+        </a></ion-item>
+        <ion-item class="item item-complex" menu-close="" href="#/app/equipos"><a href="#/app/equipos" ng-href="#/app/equipos" class="item-content">
+          <i class="icon ion-ios-body-outline"></i>  Equipos
+        </a></ion-item>
+        <div class="item item-divider">
+         SMA
+        </div>
+        <ion-item class="item item-complex" menu-close="" href="#/app/rests"><a href="#/app/rests" ng-href="#/app/rests" class="item-content">
+           <i class="icon ion-fork"></i> Restaurantes
+        </a></ion-item>
+         <ion-item class="item item-complex" menu-close="" href="#/app/turism"><a href="#/app/turism" ng-href="#/app/turism" class="item-content">
+         <i class="icon ion-android-image"></i>  Turismo
+        </a></ion-item>
+         <ion-item class="item item-complex" menu-close="" href="#/app/playlists"><a href="#/app/playlists" ng-href="#/app/playlists" class="item-content">
+          <i class="icon ion-android-cart"></i> Souveniers
+        </a></ion-item>
+      </div></ion-list>
+    </div><div class="scroll-bar scroll-bar-v"><div style="transform: translate3d(0px, 0px, 0px) scaleY(1); height: 0px;" class="scroll-bar-indicator scroll-bar-fade-out"></div></div></ion-content>
+  </ion-side-menu>
+</ion-side-menus></ion-nav-view>
+  
+
+
+</body></html>

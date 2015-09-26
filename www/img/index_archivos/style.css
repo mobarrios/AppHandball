@@ -1,0 +1,153 @@
+/* Empty. Add your own CSS if you like */
+/*--------------------         COLORS         -------------------*/
+.background1{
+    background: rgba(126, 185, 78, 0.64);
+}
+
+.background2{
+    background: #b4dda8;
+}
+.background3{
+    background: rgba(95, 160, 185, 0.64);
+}
+
+.background4{
+    background: rgb(232, 232, 232);
+}
+
+.background5{
+    background: #0d572b;
+}
+
+
+/*--------------------         GLOBALES         -------------------*/
+
+.redondeada{
+    border-radius:50%;
+    border:3px solid white;
+    /*border:3px solid #7EB94E;*/
+}
+
+
+
+.margin{
+    margin:10px;
+}
+
+
+/*--------------------         NAVBAR         -------------------*/
+.bar.bar-balanced{
+    border-color: #97b51d;
+    background-color: #7EB94E;
+    border-bottom: 2px solid rgb(63, 131, 8);
+}
+
+
+/*--------------------         HOME         -------------------*/
+.box
+{
+    margin:0;
+    border-bottom: 10px solid #428368;
+    width: 100%;
+    /*height:50vh;*/
+}
+
+.box img
+{
+    width: 100%;
+    /*height:auto;*/
+
+}
+
+.logo
+{
+    width:50%;
+    position: fixed;
+    left:0;
+    right:0;
+    top:10%;
+    margin:auto;
+    z-index: 100;
+    opacity: .8;
+}
+
+.logo div{
+    border-radius:50%;
+    width: 100%;
+    background:white;
+    padding:25px;
+    text-align:center;
+ }
+
+.logo img{
+    width: 80%;
+
+}
+
+#sponsors{
+    padding:0;
+    width:100%;
+    margin-top:0;
+    min-height: 150px;
+    height:100%;
+    border-bottom: 25px solid #428368;
+}
+
+#sponsors #sponsorPpal{
+    border-bottom: 4px solid #428368;
+}
+
+#sponsors .childInline>div{
+    width:120px;
+}
+
+
+.childInline>div{
+    display: inline-block;
+}
+
+
+/*--------------------         RESTAURANTES         -------------------*/
+#restDescript{
+    margin:0 10px;
+    margin-top:40px;
+}
+
+#restDescript p{
+    position: relative;
+    padding-left:34px;
+    margin-top:15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+#restDescript i{
+    font-size:1.8em;
+    display: flex;
+    align-items: center;
+    position:absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    color: #389eae;
+}
+
+
+#mapa{
+    margin:0 10px;
+}
+
+
+#mapa #map_canvas{
+    width: 100%;
+    height:300px;
+}
+
+
+
+
+
+
+
+
+

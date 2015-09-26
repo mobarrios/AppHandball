@@ -1,10 +1,23 @@
-angular.module('starter.controllers', [])
+var app = angular.module('starter.controllers', [])
 
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
 
+$scope.update = function(){
+ 
+
+  $http.get('http://www.navcoder.net/sistemas/content/public/ws/teams/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==')
+    .success(function(response){
+     window.localStorage['teams'] = JSON.stringify(response); 
+    });
+
+   $http.get('http://www.navcoder.net/sistemas/content/public/ws/restos/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==')
+    .success(function(response){
+     window.localStorage['restos'] = JSON.stringify(response); 
+    });
   
 
+};
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -56,20 +69,19 @@ angular.module('starter.controllers', [])
 })
 
 .controller('restsController',function($scope){
-  $scope.rests = [
-    { name: 'El Regional', id : 1 , address:'Avenida San Martín 1201, 8370 San Martin de los Andes, Neuquén', tel:'02972 41-4600'},
-    {name: 'Ku de los Andes', id :2 ,address:'Av. San Martín 1053, Q8370EJJ San Martin de los Andes, Neuquén', tel:'02972 42-7039'},
-    { name: 'Parrilla Patagonia Piscis', id : 3 , address:'Gral. Villegas 598, Q8370EKL San Martin de los Andes, Neuquén', tel:'02972 42-3247'}
-   
-
-  ];
+  
+  $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
 })
 
 .controller('equiposController',function($scope, $http){
-  
-        $http.get('http://localhost/sistemas/master/public/ws/content/eyJpdiI6ImFiYjltTno3TjJPWnBcL1JGWkRtV3V3PT0iLCJ2YWx1ZSI6Ik9IYWQ3ZVl3Y3ZIcGpzTktCcDQybFdaaVZCMXNBaFNsM1lwT2FoWGZKVm89IiwibWFjIjoiNDRlY2Y0MGU0OTg4OWQ1NGUzMTZjN2I0ZmI4NTdjMzZiYmNlNjY4YThmODJhMjkyNzA1MTI0N2U5ZjhjYmYwZSJ9').success(function(response){
-            $scope.name = response; 
-          });
+
+
+
+$scope.name = JSON.parse(window.localStorage['teams'] || '{}');
+
+      //  $http.get('http://www.navcoder.net/sistemas/content/public/ws/teams/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==').success(function(response){
+       //     $scope.name = response; 
+       //   });
 
 
   $scope.equipos = [
