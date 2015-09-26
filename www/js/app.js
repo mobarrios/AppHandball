@@ -79,16 +79,23 @@ angular.module('starter', ['ionic', 'starter.controllers','ngResource'])
       }
     })
 
-
-
-
-
     .state('app.playlists', {
       url: '/playlists',
       views: {
         'menuContent': {
           templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          controller: 'MapController'
+        }
+      }
+    })
+
+
+    .state('app.map', {
+      url: '/map',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/map.html',
+          controller: 'mapController'
         }
       }
     })

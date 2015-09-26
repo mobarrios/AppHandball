@@ -73,6 +73,7 @@ $scope.update = function(){
   $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
 })
 
+<<<<<<< HEAD
 .controller('equiposController',function($scope, $http){
 
 
@@ -82,6 +83,62 @@ $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
       //  $http.get('http://www.navcoder.net/sistemas/content/public/ws/teams/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==').success(function(response){
        //     $scope.name = response; 
        //   });
+=======
+.controller('mapController',function($scope){
+  $scope.map = [];
+})
+
+.controller('MapController', function($scope, $ionicLoading) {
+
+  google.maps.event.addDomListener(window, 'load', function() {
+    var map = new google.maps.Map(document.getElementById('maps'), {
+      zoom: 16
+    });
+    var geocoder = new google.maps.Geocoder();
+
+    geocodeAddress(geocoder, map);
+
+
+    function geocodeAddress(geocoder, resultsMap) {
+      var address = "Avenida 9 de julio 1966, capital federal";
+
+      geocoder.geocode({'address': address}, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+          resultsMap.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+            map: resultsMap,
+            position: results[0].geometry.location
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
+
+    $scope.map = map;
+  });
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .controller('equiposController',function($scope, $http){
+  
+        $http.get('http://localhost/sistemas/master/public/ws/content/eyJpdiI6ImFiYjltTno3TjJPWnBcL1JGWkRtV3V3PT0iLCJ2YWx1ZSI6Ik9IYWQ3ZVl3Y3ZIcGpzTktCcDQybFdaaVZCMXNBaFNsM1lwT2FoWGZKVm89IiwibWFjIjoiNDRlY2Y0MGU0OTg4OWQ1NGUzMTZjN2I0ZmI4NTdjMzZiYmNlNjY4YThmODJhMjkyNzA1MTI0N2U5ZjhjYmYwZSJ9').success(function(response){
+            $scope.name = response; 
+          });
+>>>>>>> 3eb78083af9f4219ef22ac3a232253d1a835568f
 
 
   $scope.equipos = [

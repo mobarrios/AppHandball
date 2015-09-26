@@ -1,7 +1,7 @@
 <div class="list">
     <div class="item item-avatar" id="restDescript">
         <img src="img/rest1.jpg">
-        <h2>Noombre del restó</h2>
+        <h2>Nombre del restó</h2>
         <p>
             <i class="icon ion-location icon-right"></i>
             Dirección n° 1234
@@ -12,17 +12,18 @@
         </p>
         <p>
             <i class="icon ion-ios-world-outline icon-right"></i>
-            nombre@dominio.com
+            <a href="http://www.nombre@dominio.com">nombre@dominio.com</a>
         </p>
     </div>
 
-    <div class="item item-image" id="mapa">
-        <div id='map_canvas'></div>
+    <div class="item item-image" id="mapa" ng-controller="MapController">
+        <div id="maps" ></div>
     </div>
 
-    <a class="item item-icon-left assertive" href="#">
-        <i class="icon ion-android-locate"></i>
-        ¿Cómo llegar?
+    <a class="item item-icon-left ruta" href="#/app/map">
+        <i class="icon ion-android-locate calm"></i>
+        <h2>¿Cómo llegar?</h2>
+        <p>Desde mi ubicación actual</p>
     </a>
 
 </div>
