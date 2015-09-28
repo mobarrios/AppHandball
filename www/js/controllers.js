@@ -57,6 +57,49 @@ $scope.update = function(){
   };
 })
 
+
+        .factory("cargarMapa",function(){
+          var direccion = "Av. 9 de julio 1666, buenos aires";
+          var mapa = {
+            setDireccion : function (dir) {
+              direccion = dir;
+            },
+            getDireccion : function(){
+              return direccion;
+            },
+            setMapa : function () {
+              google.maps.event.addDomListener(window, 'load', function() {
+                var map = new google.maps.Map(document.getElementById('maps'), {
+                  zoom: 16
+                });
+                var geocoder = new google.maps.Geocoder();
+
+                geocodeAddress(geocoder, map);
+
+
+                function geocodeAddress(geocoder, resultsMap) {
+                  geocoder.geocode({'address': direccion}, function(results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                      resultsMap.setCenter(results[0].geometry.location);
+                      var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location
+                      });
+                    } else {
+                      alert('No encontró la dirección por: ' + status);
+                    }
+                  });
+                }
+
+                return map;
+              });
+            }
+          };
+
+          return mapa;
+        })
+
+
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
@@ -68,9 +111,17 @@ $scope.update = function(){
   ];
 })
 
-.controller('restsController',function($scope){
-  
+.controller('restsController',function($scope,cargarMapa){
+
   $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
+          $scope.reload = function(){
+            window.location.reload();
+          };
+
+      $scope.getAddress = function(address){
+        address = address.address;
+        cargarMapa.setDireccion(address);
+      }
 })
 
 .controller('equiposController',function($scope, $http) {
@@ -99,34 +150,18 @@ $scope.update = function(){
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-          google.maps.event.addDomListener(window, 'load', function() {
-            var map = new google.maps.Map(document.getElementById('maps'), {
-              zoom: 16
-            });
-            var geocoder = new google.maps.Geocoder();
 
-            geocodeAddress(geocoder, map);
+.controller('PlaylistCtrl', function($scope, $stateParams,cargarMapa) {
+      var vm = this;
 
+      vm.direccion = cargarMapa.getDireccion();
 
-            function geocodeAddress(geocoder, resultsMap) {
-              var address = "Avenida 9 de julio 1966, capital federal";
+      vm.mapa = cargarMapa.setMapa(vm.direccion);
 
-              geocoder.geocode({'address': address}, function(results, status) {
-                if (status === google.maps.GeocoderStatus.OK) {
-                  resultsMap.setCenter(results[0].geometry.location);
-                  var marker = new google.maps.Marker({
-                    map: resultsMap,
-                    position: results[0].geometry.location
-                  });
-                } else {
-                  alert('Geocode was not successful for the following reason: ' + status);
-                }
-              });
-            }
+      console.log(vm.mapa);
+      $scope.map = vm.mapa;
 
-            $scope.map = map;
-          });
-})
+});
+
 
 
