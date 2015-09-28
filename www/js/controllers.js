@@ -81,6 +81,49 @@ $scope.doRefresh = function(){
   };
 })
 
+
+        .factory("cargarMapa",function(){
+          var direccion = "Av. 9 de julio 1666, buenos aires";
+          var mapa = {
+            setDireccion : function (dir) {
+              direccion = dir;
+            },
+            getDireccion : function(){
+              return direccion;
+            },
+            setMapa : function () {
+              google.maps.event.addDomListener(window, 'load', function() {
+                var map = new google.maps.Map(document.getElementById('maps'), {
+                  zoom: 16
+                });
+                var geocoder = new google.maps.Geocoder();
+
+                geocodeAddress(geocoder, map);
+
+
+                function geocodeAddress(geocoder, resultsMap) {
+                  geocoder.geocode({'address': direccion}, function(results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                      resultsMap.setCenter(results[0].geometry.location);
+                      var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location
+                      });
+                    } else {
+                      alert('No encontró la dirección por: ' + status);
+                    }
+                  });
+                }
+
+                return map;
+              });
+            }
+          };
+
+          return mapa;
+        })
+
+
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
@@ -92,6 +135,7 @@ $scope.doRefresh = function(){
   ];
 })
 
+<<<<<<< HEAD
 .controller('restsController',function($scope){
 
 
@@ -100,46 +144,48 @@ $scope.doRefresh = function(){
 
 })
 
+=======
+.controller('restsController',function($scope,cargarMapa){
 
-.controller('equiposController',function($scope){
+  $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
+          $scope.reload = function(){
+            window.location.reload();
+          };
 
+      $scope.getAddress = function(address){
+        address = address.address;
+        cargarMapa.setDireccion(address);
+      }
+})
+
+.controller('equiposController',function($scope, $http) {
     $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
 
-})
+        //  $http.get('http://www.navcoder.net/sistemas/content/public/ws/teams/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==').success(function(response){
+        //     $scope.name = response;
+        //   });
+    })
 
-.controller('MapController', function($scope, $ionicLoading) {
-
-  google.maps.event.addDomListener(window, 'load', function() {
-    var map = new google.maps.Map(document.getElementById('maps'), {
-      zoom: 16
-    });
-    var geocoder = new google.maps.Geocoder();
-
-    geocodeAddress(geocoder, map);
-
-
-    function geocodeAddress(geocoder, resultsMap) {
-      var address = "Avenida 9 de julio 1966, capital federal";
-
-      geocoder.geocode({'address': address}, function(results, status) {
-        if (status === google.maps.GeocoderStatus.OK) {
-          resultsMap.setCenter(results[0].geometry.location);
-          var marker = new google.maps.Marker({
-            map: resultsMap,
-            position: results[0].geometry.location
-          });
-        } else {
-          alert('Geocode was not successful for the following reason: ' + status);
-        }
-      });
-    }
-
-    $scope.map = map;
-  });
+.controller('mapController',function($scope){
+  $scope.map = [];
 
 })
 
 
+.controller('jugadoresController',function($scope, $stateParams){
+ 
+ $scope.param = $stateParams.equiposId;
+
+
+  $scope.jugadores = [
+    { name: 'Cesar, Diego', foto:'foto.jpg' },
+    { name: 'Perez, Juan', foto:'foto.jpg'}
+  ];
+})
+
+
+.controller('PlaylistCtrl', function($scope, $stateParams,cargarMapa) {
+      var vm = this;
 
 .controller('jugadoresController',function($scope, $stateParams, $filter){
  

@@ -84,7 +84,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngResource'])
       views: {
         'menuContent': {
           templateUrl: 'templates/playlists.html',
-          controller: 'MapController'
+          controller: 'PlaylistCtrl'
         }
       }
     })
