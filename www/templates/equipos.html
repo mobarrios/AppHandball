@@ -6,9 +6,10 @@
 		<input type="search" placeholder="Buscar"  ng-model="search">
 		</label>
 		</div>
+    
+  
 
     <div class="list">
-
 
     <a ng-repeat="equipo in name | filter:search" class="item item-avatar" href="#/app/jugadores/{{equipo.id}}">
       <img src="http://www.navcoder.net/sistemas/content/public/{{equipo.escudo}}">

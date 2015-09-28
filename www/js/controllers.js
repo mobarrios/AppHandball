@@ -1,10 +1,13 @@
 var app = angular.module('starter.controllers', [])
 
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, $state) {
 
 $scope.update = function(){
- 
+
+ window.localStorage.removeItem('teams');
+ window.localStorage.removeItem('restos');
+
 
   $http.get('http://www.navcoder.net/sistemas/content/public/ws/teams/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==')
     .success(function(response){
@@ -17,7 +20,28 @@ $scope.update = function(){
     });
   
 
+
 };
+
+$scope.doRefresh = function(){
+ 
+ window.localStorage.removeItem('restos');
+
+    $http.get('http://www.navcoder.net/sistemas/content/public/ws/restos/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==')
+    .success(function(response)
+    {
+     window.localStorage['restos'] = JSON.stringify(response); 
+    })
+    .finally(function(){
+      $scope.$broadcast('scroll.refreshComplete');
+            window.location.reload();
+
+    });
+
+
+};
+
+
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -69,23 +93,18 @@ $scope.update = function(){
 })
 
 .controller('restsController',function($scope){
+
+
+    $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
   
-  $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
+
 })
 
-<<<<<<< HEAD
-.controller('equiposController',function($scope, $http){
 
+.controller('equiposController',function($scope){
 
+    $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
 
-$scope.name = JSON.parse(window.localStorage['teams'] || '{}');
-
-      //  $http.get('http://www.navcoder.net/sistemas/content/public/ws/teams/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==').success(function(response){
-       //     $scope.name = response; 
-       //   });
-=======
-.controller('mapController',function($scope){
-  $scope.map = [];
 })
 
 .controller('MapController', function($scope, $ionicLoading) {
@@ -122,40 +141,22 @@ $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    .controller('equiposController',function($scope, $http){
-  
-        $http.get('http://localhost/sistemas/master/public/ws/content/eyJpdiI6ImFiYjltTno3TjJPWnBcL1JGWkRtV3V3PT0iLCJ2YWx1ZSI6Ik9IYWQ3ZVl3Y3ZIcGpzTktCcDQybFdaaVZCMXNBaFNsM1lwT2FoWGZKVm89IiwibWFjIjoiNDRlY2Y0MGU0OTg4OWQ1NGUzMTZjN2I0ZmI4NTdjMzZiYmNlNjY4YThmODJhMjkyNzA1MTI0N2U5ZjhjYmYwZSJ9').success(function(response){
-            $scope.name = response; 
-          });
->>>>>>> 3eb78083af9f4219ef22ac3a232253d1a835568f
-
-
-  $scope.equipos = [
-    { name: 'Estudiantes de La Plata', logo:'estudiantes.jpg',city: 'La Plata',id : 1 },
-    { name: 'Ferrocarril Oeste', logo:'ferro.jpg', city: 'CABA',id :2 },
-  ];
-})
-
-.controller('jugadoresController',function($scope, $stateParams){
+.controller('jugadoresController',function($scope, $stateParams, $filter){
  
- $scope.param = $stateParams.equiposId;
+var id_team = $stateParams.equiposId;
+$scope.name = JSON.parse(window.localStorage['teams'] || '{}');
 
 
-  $scope.jugadores = [
-    { name: 'Cesar, Diego', foto:'foto.jpg' },
-    { name: 'Perez, Juan', foto:'foto.jpg'},
-  ];
+ var a = $scope.name.filter(function(data) {
+      return (data.id == id_team);
+  });
+
+ $scope.jugadores = a;
+
+  //$scope.jugadores = [
+  //  { name: 'Cesar, Diego', foto:'foto.jpg' },
+  //  { name: 'Perez, Juan', foto:'foto.jpg'},
+  //];
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

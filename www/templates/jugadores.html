@@ -1,14 +1,14 @@
 <ion-view view-title="Jugadores">
   <ion-content>
-    <h1>{{param}}</h1>
+    <h3>{{jugadores[0].name}}</h3>
 
 
-    <div class="list">
-    <a ng-repeat="jugador in jugadores" class="item item-avatar" >
+    <div ng-repeat="value in jugadores"  class="list">
 
-      <img src="img/{{jugador.foto}}">
+    <a ng-repeat=" jugador in value.players" class="item item-avatar" >
+      <img src="http://www.navcoder.net/sistemas/content/public/{{jugador.foto}}">
       <h2>{{jugador.name}}</h2>
-      <p>{{jugador.city}}</p>
+      <p>{{jugador.last_name}}</p>
     </a>
 
 
