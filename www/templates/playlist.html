@@ -1,30 +1,30 @@
 <div class="list">
-    <div class="item item-avatar" id="restDescript">
-        <img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}">
-        <h2>{{rest.name}}<small>{{rest.type}}</small></h2>
-        <p>
-            <i class="icon ion-location icon-right"></i>
-            {{rest.address}}
-        </p>
-        <p>
-            <i class="icon ion-android-call icon-right"></i>
-            {{rest.phone}}
-        </p>
-        <p>
-            <i class="icon ion-ios-world-outline icon-right"></i>
-            <a href="http://www.nombre@dominio.com">{{rest.phone}}</a>
-        </p>
-    </div>
+    <ion-content>
+        <div class="item item-avatar" id="restDescript">
+            <img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}">
+            <h2>{{rest.name}}<small>{{rest.type}}</small></h2>
+            <p>
+                <i class="icon ion-location icon-right"></i>
+                {{rest.address}}
+            </p>
+            <p>
+                <i class="icon ion-android-call icon-right"></i>
+                {{rest.phone}}
+            </p>
+            <p>
+                <i class="icon ion-ios-world-outline icon-right"></i>
+                <a href="http://www.nombre@dominio.com">{{rest.phone}}</a>
+            </p>
+        </div>
 
-    <div class="item item-image" id="mapa">
-        <div id="maps"></div>
-    </div>
+        <div class="item item-image" id="mapa">
+            <div id="maps"></div>
+        </div>
 
-    <a class="item item-icon-left ruta" href="#/app/map">
-        <i class="icon ion-android-locate calm"></i>
-        <h2>¿Cómo llegar?</h2>
-        <p>Desde mi ubicación actual</p>
-    </a>
-
-
+        <a class="item item-icon-left ruta" href="#/app/map" ng-click="reload()">
+            <i class="icon ion-android-locate calm"></i>
+            <h2>¿Cómo llegar?</h2>
+            <p>Desde mi ubicación actual</p>
+        </a>
+    </ion-content>
 </div>

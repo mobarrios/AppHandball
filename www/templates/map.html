@@ -1,10 +1,16 @@
 <div class="list">
-    <div class="item item-avatar" id="restDescript">
-        <img src="img/rest1.jpg">
-        <h2>Nombre del restó</h2>
-    </div>
+    <ion-content>
+        <div class="item item-avatar" id="restDescript">
+            <img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}">
+            <h2>{{rest.name}}</h2>
+            <p>
+                <i class="icon ion-location icon-right"></i>
+                {{rest.address}}
+            </p>
+        </div>
 
-    <div class="item item-image" id="mapa">
-        <div id='route_map_canvas'></div>
-    </div>
+        <div class="item item-image" id="mapa">
+            <div id='route_map_canvas'></div>
+        </div>
+    </ion-content>
 </div>
