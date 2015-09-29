@@ -180,8 +180,9 @@ $scope.doRefresh = function(){
 
     $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
 
-    $scope.getAddress = function(address){
-        address = address.address;
+    $scope.getAddress = function(restaurant){
+        window.localStorage['restaurant'] = angular.toJson(restaurant);
+        address = restaurant.address;
         cargarMapa.setDireccion(address);
         window.location.reload();
     }
@@ -233,7 +234,8 @@ $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
 
     vm.mapa = cargarMapa.setMapa(vm.direccion);
 
-    //console.log(vm.direccion);
     $scope.map = vm.mapa;
+
+    $scope.rest = angular.fromJson(window.localStorage['restaurant']);
 
 });

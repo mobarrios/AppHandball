@@ -1,23 +1,23 @@
 <div class="list">
     <div class="item item-avatar" id="restDescript">
-        <img src="img/rest1.jpg">
-        <h2>Nombre del restó</h2>
+        <img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}">
+        <h2>{{rest.name}}<small>{{rest.type}}</small></h2>
         <p>
             <i class="icon ion-location icon-right"></i>
-            Dirección n° 1234
+            {{rest.address}}
         </p>
         <p>
             <i class="icon ion-android-call icon-right"></i>
-            54154 - 545465465
+            {{rest.phone}}
         </p>
         <p>
             <i class="icon ion-ios-world-outline icon-right"></i>
-            <a href="http://www.nombre@dominio.com">nombre@dominio.com</a>
+            <a href="http://www.nombre@dominio.com">{{rest.phone}}</a>
         </p>
     </div>
 
     <div class="item item-image" id="mapa">
-        <div id="maps">
+        <div id="maps"></div>
     </div>
 
     <a class="item item-icon-left ruta" href="#/app/map">
@@ -25,5 +25,6 @@
         <h2>¿Cómo llegar?</h2>
         <p>Desde mi ubicación actual</p>
     </a>
+
 
 </div>
