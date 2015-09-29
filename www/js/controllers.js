@@ -82,47 +82,86 @@ $scope.doRefresh = function(){
 })
 
 
-        .factory("cargarMapa",function(){
-          var direccion = "Av. 9 de julio 1666, buenos aires";
-          var mapa = {
+        //.factory("cargarMapa",function(){
+        //  var direccion = "Av. 9 de julio 1666, buenos aires";
+        //  var mapa = {
+        //    setDireccion : function (dir) {
+        //      direccion = dir;
+        //    },
+        //    getDireccion : function(){
+        //      return direccion;
+        //    },
+        //    setMapa : function () {
+        //      google.maps.event.addDomListener(window, 'load', function() {
+        //        var map = new google.maps.Map(document.getElementById('maps'), {
+        //          zoom: 16
+        //        });
+        //        var geocoder = new google.maps.Geocoder();
+        //
+        //        geocodeAddress(geocoder, map);
+        //
+        //
+        //        function geocodeAddress(geocoder, resultsMap) {
+        //          geocoder.geocode({'address': direccion}, function(results, status) {
+        //            if (status === google.maps.GeocoderStatus.OK) {
+        //              resultsMap.setCenter(results[0].geometry.location);
+        //              var marker = new google.maps.Marker({
+        //                map: resultsMap,
+        //                position: results[0].geometry.location
+        //              });
+        //            } else {
+        //              alert('No encontró la dirección por: ' + status);
+        //            }
+        //          });
+        //        }
+        //
+        //        return map;
+        //      });
+        //    }
+        //  };
+        //
+        //  return mapa;
+        //})
+    .factory("cargarMapa",function(){
+        var direccion = window.localStorage['direccion'];
+        var mapa = {
             setDireccion : function (dir) {
-              direccion = dir;
+                window.localStorage['direccion'] = dir;
+                direccion = window.localStorage['direccion'];
             },
             getDireccion : function(){
-              return direccion;
+                return direccion;
             },
             setMapa : function () {
-              google.maps.event.addDomListener(window, 'load', function() {
-                var map = new google.maps.Map(document.getElementById('maps'), {
-                  zoom: 16
-                });
-                var geocoder = new google.maps.Geocoder();
+                google.maps.event.addDomListener(window, 'load', function() {
+                    var map = new google.maps.Map(document.getElementById('maps'), {
+                        zoom: 16
+                    });
+                    var geocoder = new google.maps.Geocoder();
 
-                geocodeAddress(geocoder, map);
+                    geocodeAddress(geocoder, map);
 
 
-                function geocodeAddress(geocoder, resultsMap) {
-                  geocoder.geocode({'address': direccion}, function(results, status) {
-                    if (status === google.maps.GeocoderStatus.OK) {
-                      resultsMap.setCenter(results[0].geometry.location);
-                      var marker = new google.maps.Marker({
-                        map: resultsMap,
-                        position: results[0].geometry.location
-                      });
-                    } else {
-                      alert('No encontró la dirección por: ' + status);
+                    function geocodeAddress(geocoder, resultsMap) {
+                        geocoder.geocode({'address': direccion}, function(results, status) {
+                            if (status === google.maps.GeocoderStatus.OK) {
+                                resultsMap.setCenter(results[0].geometry.location);
+                                var marker = new google.maps.Marker({
+                                    map: resultsMap,
+                                    position: results[0].geometry.location
+                                });
+                            } else {
+                                alert('No encontró la dirección por: ' + status);
+                            }
+                        });
                     }
-                  });
-                }
-
-                return map;
-              });
+                    return map;
+                });
             }
-          };
+        };
 
-          return mapa;
-        })
-
+        return mapa;
+    })
 
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
@@ -135,36 +174,25 @@ $scope.doRefresh = function(){
   ];
 })
 
-<<<<<<< HEAD
-.controller('restsController',function($scope){
+
+.controller('restsController',function($scope,cargarMapa){
 
 
     $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
-  
 
-})
-
-=======
-.controller('restsController',function($scope,cargarMapa){
-
-  $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
-          $scope.reload = function(){
-            window.location.reload();
-          };
-
-      $scope.getAddress = function(address){
+    $scope.getAddress = function(address){
         address = address.address;
         cargarMapa.setDireccion(address);
-      }
+        window.location.reload();
+    }
+
 })
+
 
 .controller('equiposController',function($scope, $http) {
     $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
 
-        //  $http.get('http://www.navcoder.net/sistemas/content/public/ws/teams/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==').success(function(response){
-        //     $scope.name = response;
-        //   });
-    })
+})
 
 .controller('mapController',function($scope){
   $scope.map = [];
@@ -184,9 +212,6 @@ $scope.doRefresh = function(){
 })
 
 
-.controller('PlaylistCtrl', function($scope, $stateParams,cargarMapa) {
-      var vm = this;
-
 .controller('jugadoresController',function($scope, $stateParams, $filter){
  
 var id_team = $stateParams.equiposId;
@@ -199,11 +224,16 @@ $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
 
  $scope.jugadores = a;
 
-  //$scope.jugadores = [
-  //  { name: 'Cesar, Diego', foto:'foto.jpg' },
-  //  { name: 'Perez, Juan', foto:'foto.jpg'},
-  //];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('PlaylistCtrl', function($scope, $stateParams,cargarMapa) {
+    var vm = this;
+
+    vm.direccion = cargarMapa.getDireccion();
+
+    vm.mapa = cargarMapa.setMapa(vm.direccion);
+
+    //console.log(vm.direccion);
+    $scope.map = vm.mapa;
+
 });
