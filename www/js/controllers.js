@@ -135,7 +135,6 @@ $scope.doRefresh = function(){
   ];
 })
 
-<<<<<<< HEAD
 .controller('restsController',function($scope){
 
 
@@ -144,7 +143,7 @@ $scope.doRefresh = function(){
 
 })
 
-=======
+/*
 .controller('restsController',function($scope,cargarMapa){
 
   $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
@@ -157,7 +156,7 @@ $scope.doRefresh = function(){
         cargarMapa.setDireccion(address);
       }
 })
-
+*/
 .controller('equiposController',function($scope, $http) {
     $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
 
@@ -184,9 +183,10 @@ $scope.doRefresh = function(){
 })
 
 
+/*
 .controller('PlaylistCtrl', function($scope, $stateParams,cargarMapa) {
       var vm = this;
-
+*/
 .controller('jugadoresController',function($scope, $stateParams, $filter){
  
 var id_team = $stateParams.equiposId;
