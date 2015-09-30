@@ -208,8 +208,28 @@ $scope.doRefresh = function(){
 })
 
 
-.controller('restsController',function($scope,cargarMapa){
+.controller('restsController',function($scope,cargarMapa,$ionicModal){
     $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
+        $scope.datos = {};
+
+        $ionicModal.fromTemplateUrl('templates/modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
+        $scope.openModal = function(rest) {
+            $scope.datos = rest;
+            $scope.modal.show();
+        };
+        $scope.closeModal = function() {
+            $scope.modal.hide();
+        };
+        //Cleanup the modal when we're done with it!
+        $scope.$on('$destroy', function() {
+            $scope.modal.remove();
+        });
+
 
     $scope.items = {
 
