@@ -1,11 +1,13 @@
 <ion-modal-view class="modal">
-    <ion-header-bar>
-        <h1 class="item">{{datos.name}}</h1>
-        <div class="buttons">
+    <ion-content>
+        <div id="cerrar">
             <button class="button button-clear ion-close-round" ng-click="closeModal()"></button>
         </div>
-    </ion-header-bar>
-    <ion-content>
-        Hello!
+        <ion-scroll zooming="true" direction="xy">
+            <img src="http://www.navcoder.net/sistemas/content/public/{{datos.imagen[0]}}" alt="{{datos.name}}">
+        </ion-scroll>
     </ion-content>
+    <div class="bar bar-footer">
+        <h1>{{datos.name}}</h1>
+    </div>
 </ion-modal-view>

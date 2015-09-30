@@ -158,17 +158,41 @@
     backgroud: #ddd;
 }
 
-.modal>.bar,.modal>.bar-header{
+.modal>.bar,.modal>.bar-footer{
     border-color: #97b51d;
     background-color: #7EB94E;
-    border-bottom: 2px solid rgb(63, 131, 8);
+    border-top: 2px solid rgb(63, 131, 8);
 }
 
-.modal>.bar-header>h1,.modal>.bar-header>p,.modal>.bar-header>.buttons>.button{
+.modal>.bar-footer>h1,.modal>.bar-footer>p,.modal>.bar-footer>.buttons>.button{
     color:white !important;
+    font-size:17px;
+    width: 100%;
+    text-align:center !important;
 }
 
+#cerrar{
+    position:absolute;
+    top:5px;
+    right:5px;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    z-index:555;
+}
 
+#cerrar>button{
+    color: black !important;
+    margin:0;
+    padding:0;
+    width:30px;
+    min-width:30px;
+    height:30px;
+    min-height:30px;
+    line-height: 16px;
+    font-size: 16px;
+}
 
 
 
