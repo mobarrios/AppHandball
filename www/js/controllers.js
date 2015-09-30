@@ -138,8 +138,23 @@ $scope.doRefresh = function(){
 .controller('restsController',function($scope){
 
 
-    $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
+  $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
   
+   $scope.rests  = $scope.rests.filter(function(data) {
+      return (data.types == 'Restaurant');
+  });
+
+
+})
+
+.controller('turismoController',function($scope){
+
+
+  $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
+  
+   $scope.rests  = $scope.rests.filter(function(data) {
+      return (data.types == 'Turismo');
+  });
 
 })
 
