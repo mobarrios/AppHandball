@@ -1,5 +1,4 @@
-var app = angular.module('starter.controllers', [])
-
+var app = angular.module('starter.controllers', ['ionic'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, $state) {
 
@@ -81,47 +80,120 @@ $scope.doRefresh = function(){
   };
 })
 
-
-        .factory("cargarMapa",function(){
-          var direccion = "Av. 9 de julio 1666, buenos aires";
-          var mapa = {
+    .factory("cargarMapa",function(){
+        var direccion = window.localStorage['direccion'];
+        var mapa = {
             setDireccion : function (dir) {
-              direccion = dir;
+                window.localStorage['direccion'] = dir;
+                direccion = window.localStorage['direccion'];
             },
             getDireccion : function(){
-              return direccion;
+                return direccion;
             },
             setMapa : function () {
-              google.maps.event.addDomListener(window, 'load', function() {
-                var map = new google.maps.Map(document.getElementById('maps'), {
-                  zoom: 16
-                });
-                var geocoder = new google.maps.Geocoder();
+                google.maps.event.addDomListener(window, 'load', function() {
+                    var map = new google.maps.Map(document.getElementById('maps'), {
+                        zoom: 16
+                    });
+                    var geocoder = new google.maps.Geocoder();
 
-                geocodeAddress(geocoder, map);
+                    geocodeAddress(geocoder, map);
 
 
-                function geocodeAddress(geocoder, resultsMap) {
-                  geocoder.geocode({'address': direccion}, function(results, status) {
-                    if (status === google.maps.GeocoderStatus.OK) {
-                      resultsMap.setCenter(results[0].geometry.location);
-                      var marker = new google.maps.Marker({
-                        map: resultsMap,
-                        position: results[0].geometry.location
-                      });
-                    } else {
-                      alert('No encontró la dirección por: ' + status);
+                    function geocodeAddress(geocoder, resultsMap) {
+                        geocoder.geocode({'address': direccion}, function(results, status) {
+                            if (status === google.maps.GeocoderStatus.OK) {
+                                resultsMap.setCenter(results[0].geometry.location);
+                                var marker = new google.maps.Marker({
+                                    map: resultsMap,
+                                    position: results[0].geometry.location
+                                });
+                            } else {
+                                alert('No encontró la dirección por: ' + status);
+                            }
+                        });
                     }
-                  });
-                }
-
-                return map;
-              });
+                    return map;
+                });
             }
-          };
+        };
 
-          return mapa;
-        })
+        return mapa;
+    })
+
+    .factory("cargarRuta",function(){
+        var direccion = window.localStorage['direccion'];
+        var restaurant = window.localStorage['restaurant'];
+        var ruta = {
+            getRestaurant : function(){
+                return restaurant;
+            },
+            loadRoute : function(){
+                google.maps.event.addDomListener(window, 'load', function() {
+                    var directionsDisplay;
+
+                    var directionsService;
+
+
+                    navigator.geolocation.getCurrentPosition(function (posObj) {
+
+                        var coordenadas = posObj.coords;
+
+                        var myLatlng = new google.maps.LatLng(coordenadas.latitude, coordenadas.longitude);
+
+                        var myOptions = {
+
+                            zoom: 17,
+
+                            center: myLatlng,
+
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+
+                        };
+
+
+                        var div = document.getElementById('route_map_canvas');
+
+                        map = new google.maps.Map(div, myOptions);
+
+                        directionsDisplay = new google.maps.DirectionsRenderer();
+
+                        directionsService = new google.maps.DirectionsService();
+
+
+                        var request = {
+
+                            origin: myLatlng,
+
+                            destination: direccion,
+
+                            travelMode: google.maps.DirectionsTravelMode['DRIVING'],
+
+                            unitSystem: google.maps.DirectionsUnitSystem['METRIC'],
+
+                            provideRouteAlternatives: true
+
+                        };
+                        directionsService.route(request, function (response, status) {
+
+                            if (status == google.maps.DirectionsStatus.OK) {
+
+                                directionsDisplay.setMap(map);
+
+                                directionsDisplay.setPanel(document.getElementById('panel_ruta'));
+
+                                directionsDisplay.setDirections(response);
+                            }
+                        });
+
+                    });
+                });
+                    return map;
+            }
+        };
+        return ruta;
+    })
+
 
 
 .controller('PlaylistsCtrl', function($scope) {
@@ -135,6 +207,7 @@ $scope.doRefresh = function(){
   ];
 })
 
+<<<<<<< HEAD
 .controller('restsController',function($scope){
 
 
@@ -172,36 +245,76 @@ $scope.doRefresh = function(){
       }
 })
 */
+=======
+
+.controller('restsController',function($scope,cargarMapa,$ionicModal){
+    $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
+        $scope.datos = {};
+
+        $ionicModal.fromTemplateUrl('templates/modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
+        $scope.openModal = function(rest) {
+            $scope.datos = rest;
+            $scope.modal.show();
+        };
+        $scope.closeModal = function() {
+            $scope.modal.hide();
+        };
+        //Cleanup the modal when we're done with it!
+        $scope.$on('$destroy', function() {
+            $scope.modal.remove();
+        });
+
+
+    $scope.items = {
+
+    };
+
+    $scope.getAddress = function(restaurant){
+        window.localStorage['restaurant'] = angular.toJson(restaurant);
+        address = restaurant.address;
+        cargarMapa.setDireccion(address);
+        window.location.reload();
+    }
+
+})
+
+
+>>>>>>> 8a0e0e80e68de39522239d82d85086487697ed79
 .controller('equiposController',function($scope, $http) {
     $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
 
-        //  $http.get('http://www.navcoder.net/sistemas/content/public/ws/teams/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==').success(function(response){
-        //     $scope.name = response;
-        //   });
-    })
+})
 
-.controller('mapController',function($scope){
-  $scope.map = [];
-
+.controller('mapController',function($scope,cargarRuta){
+        $scope.rest = angular.fromJson(cargarRuta.getRestaurant());
+        $scope.map = cargarRuta.loadRoute();
 })
 
 
-.controller('jugadoresController',function($scope, $stateParams){
- 
- $scope.param = $stateParams.equiposId;
-
-
-  $scope.jugadores = [
-    { name: 'Cesar, Diego', foto:'foto.jpg' },
-    { name: 'Perez, Juan', foto:'foto.jpg'}
-  ];
-})
-
-
+<<<<<<< HEAD
 /*
 .controller('PlaylistCtrl', function($scope, $stateParams,cargarMapa) {
       var vm = this;
 */
+=======
+//.controller('jugadoresController',function($scope, $stateParams){
+//
+// $scope.param = $stateParams.equiposId;
+//
+//
+//  $scope.jugadores = [
+//    { name: 'Cesar, Diego', foto:'foto.jpg' },
+//    { name: 'Perez, Juan', foto:'foto.jpg'}
+//  ];
+//})
+
+
+>>>>>>> 8a0e0e80e68de39522239d82d85086487697ed79
 .controller('jugadoresController',function($scope, $stateParams, $filter){
  
 var id_team = $stateParams.equiposId;
@@ -214,11 +327,20 @@ $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
 
  $scope.jugadores = a;
 
-  //$scope.jugadores = [
-  //  { name: 'Cesar, Diego', foto:'foto.jpg' },
-  //  { name: 'Perez, Juan', foto:'foto.jpg'},
-  //];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('PlaylistCtrl', function($scope, $stateParams,cargarMapa) {
+    var vm = this;
+
+    vm.direccion = cargarMapa.getDireccion();
+
+    vm.mapa = cargarMapa.setMapa(vm.direccion);
+
+    $scope.map = vm.mapa;
+
+    $scope.rest = angular.fromJson(window.localStorage['restaurant']);
+
+    $scope.reload = function(){
+        window.location.reload();
+    }
 });

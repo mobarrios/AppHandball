@@ -138,7 +138,7 @@
 }
 
 
-#mapa{
+#mapa,#popup{
     margin:0 10px;
 }
 
@@ -148,9 +148,25 @@
     height:300px;
 }
 
+.item a{
+    text-decoration: none;
+    color: inherit;
+    height:100%;
+}
 
+.modal{
+    backgroud: #ddd;
+}
 
+.modal>.bar,.modal>.bar-header{
+    border-color: #97b51d;
+    background-color: #7EB94E;
+    border-bottom: 2px solid rgb(63, 131, 8);
+}
 
+.modal>.bar-header>h1,.modal>.bar-header>p,.modal>.bar-header>.buttons>.button{
+    color:white !important;
+}
 
 
 

@@ -11,15 +11,16 @@
 			Restaurantes
 			</div>
         <div class="list">
-
-			<a  ng-repeat="rest in rests | filter:{types:'Restaurant'}" class="item item-thumbnail-left restaurant" href="#/app/playlists/{{rest.id}}">
-				<img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}">
+		<div ng-repeat="rest in rests | filter:{types:'Restaurant'}" class="item item-thumbnail-left restaurant">
+			<img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}" ng-click="openModal(rest)">
+			<a href="#/app/playlists/{{rest.id}}" ng-click="getAddress({{rest}})">
 					<h2>{{rest.name}}</h2>
 					<p>{{rest.address}}</p>
 					<p>{{rest.tel}}</p>
 			</a>
-	 	</div>
+		</div>
 
+		</div>
 
 		<div class="item item-divider">
 			Comidas Para Llevar
@@ -41,7 +42,7 @@
 			</div>
         <div class="list">
 
-			<a  ng-repeat="rest in rests | filter:{types:'Pub-Cerveceria'}" class="item item-thumbnail-left restaurant" href="#/app/playlists/{{rest.id}}">
+			<a  ng-repeat="rest in rests | filter:{types:'Pub-Cerveceria'}" class="item item-thumbnail-left restaurant" href="#/app/playlists/{{rest.id}}" ng-click="getAddress({{rest}})">
 				<img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}">
 					<h2>{{rest.name}}</h2>
 					<p>{{rest.address}}</p>
@@ -56,7 +57,7 @@
 		</div>
         <div class="list">
 
-			<a  ng-repeat="rest in rests | filter:{types:'Otros'}" class="item item-thumbnail-left restaurant" href="#/app/playlists/{{rest.id}}">
+			<a  ng-repeat="rest in rests | filter:{types:'Otros'}" class="item item-thumbnail-left restaurant" href="#/app/playlists/{{rest.id}}" ng-click="getAddress({{rest}})">
 				<img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}">
 					<h2>{{rest.name}}</h2>
 					<p>{{rest.address}}</p>
