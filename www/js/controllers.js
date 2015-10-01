@@ -221,6 +221,7 @@ $scope.doRefresh = function(){
         $scope.openModal = function(rest) {
             $scope.datos = rest;
             $scope.modal.show();
+
         };
         $scope.closeModal = function() {
             $scope.modal.hide();

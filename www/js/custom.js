@@ -3,4 +3,8 @@ $(document).ready(function(){
     var top = $(".box").css('height');
     $(".logo").css('height',width);
     $(".logo").css('top',top/2);
+
+    //$(".modal").find('img').on('click',function(){
+    //    alert("clickeada");
+    //});
 });
