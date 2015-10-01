@@ -158,10 +158,21 @@
     backgroud: #ddd;
 }
 
-.modal>.bar,.modal>.bar-footer{
-    border-color: #97b51d;
-    background-color: #7EB94E;
-    border-top: 2px solid rgb(63, 131, 8);
+.modal>.bar,.modal>.bar-footer,.bar-stable{
+    border-color: #97b51d !important;
+    background-color: #7EB94E  !important;;
+    border-top: 2px solid rgb(63, 131, 8)  !important;;
+}
+
+.sMenu{
+    border-color: #7EB94E;
+    background-color: #97b51d;
+    border-bottom: 2px solid rgb(63, 131, 8);
+}
+
+
+.bar-stable>h1{
+    color:white !important;
 }
 
 .modal>.bar-footer>h1,.modal>.bar-footer>p,.modal>.bar-footer>.buttons>.button{
