@@ -6,64 +6,19 @@
     pulling-text="Presionar par Actulizar..."
     on-refresh="doRefresh()">
   </ion-refresher>
+  <h4>{{seccion}}</h4>
 
-		<div class="item item-divider">
-			Restaurantes
+
+			<div ng-repeat="rest in rests" class="item item-thumbnail-left restaurant">
+				<img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}" ng-click="openModal(rest)">
+				<a href="#/app/playlists/{{rest.id}}" ng-click="getAddress({{rest}})">
+						<h2>{{rest.name}}</h2>
+						<p>{{rest.address}}</p>
+						<p>{{rest.tel}}</p>
+				</a>
 			</div>
-        <div class="list">
-		<div ng-repeat="rest in rests | filter:{types:'Restaurant'}" class="item item-thumbnail-left restaurant">
-			<img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}" ng-click="openModal(rest)">
-			<a href="#/app/playlists/{{rest.id}}" ng-click="getAddress({{rest}})">
-					<h2>{{rest.name}}</h2>
-					<p>{{rest.address}}</p>
-					<p>{{rest.tel}}</p>
-			</a>
 		</div>
 
-		</div>
-
-		<div class="item item-divider">
-			Comidas Para Llevar
-			</div>
-        <div class="list">
-
-
-			<a  ng-repeat="rest in rests | filter:{types:'Comidas Para llevar'}" class="item item-thumbnail-left restaurant" href="#/app/playlists/{{rest.id}}" ng-click="getAddress({{rest}})">
-				<img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}">
-					<h2>{{rest.name}}</h2>
-					<p>{{rest.address}}</p>
-					<p>{{rest.tel}}</p>
-			</a>
-	 	</div>
-
-
-	 		<div class="item item-divider">
-			Pub-Cerveceria
-			</div>
-        <div class="list">
-
-			<a  ng-repeat="rest in rests | filter:{types:'Pub-Cerveceria'}" class="item item-thumbnail-left restaurant" href="#/app/playlists/{{rest.id}}" ng-click="getAddress({{rest}})">
-				<img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}">
-					<h2>{{rest.name}}</h2>
-					<p>{{rest.address}}</p>
-					<p>{{rest.tel}}</p>
-			</a>
-	 	</div>
-
-
-
- 		<div class="item item-divider">
-		Otros
-		</div>
-        <div class="list">
-
-			<a  ng-repeat="rest in rests | filter:{types:'Otros'}" class="item item-thumbnail-left restaurant" href="#/app/playlists/{{rest.id}}" ng-click="getAddress({{rest}})">
-				<img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}">
-					<h2>{{rest.name}}</h2>
-					<p>{{rest.address}}</p>
-					<p>{{rest.tel}}</p>
-			</a>
-	 	</div>
 
 
 

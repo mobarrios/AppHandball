@@ -1,0 +1,24 @@
+<ion-view view-title="Gastronomia">
+  <ion-content>
+    <ion-list>
+
+	<ion-refresher
+	    pulling-text="Presionar par Actulizar..."
+	    on-refresh="doRefresh()">
+	  </ion-refresher>
+
+
+
+		<div ng-repeat="data in datas"  class="item item-icon-right">
+			
+			<a href="#/app/detail/{{data.type}}" >
+					<h2>{{data.type}}</h2>
+					<i class="icon ion-arrow-right-c"></i>
+			</a>
+			
+		</div>
+
+
+    </ion-list>
+  </ion-content>
+</ion-view>

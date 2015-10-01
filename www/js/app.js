@@ -51,11 +51,23 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/rests',
     views: {
       'menuContent': {
+        templateUrl: 'templates/rests2.html',
+         controller: 'restsController2'
+      }
+    }
+  })
+
+
+  .state('app.detail', {
+    url: '/detail/:type',
+    views: {
+      'menuContent': {
         templateUrl: 'templates/rests.html',
          controller: 'restsController'
       }
     }
   })
+ 
 
 .state('app.turismo', {
     url: '/turismo',
