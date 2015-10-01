@@ -6,7 +6,24 @@
     pulling-text="Presionar par Actulizar..."
     on-refresh="doRefresh()">
   </ion-refresher>
+  <h4>{{seccion}}</h4>
 
+<<<<<<< HEAD
+
+			<div ng-repeat="rest in rests" class="item item-thumbnail-left restaurant">
+				<img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}" ng-click="openModal(rest)">
+				<a href="#/app/playlists/{{rest.id}}" ng-click="getAddress({{rest}})">
+						<h2>{{rest.name}}</h2>
+						<p>{{rest.address}}</p>
+						<p>{{rest.tel}}</p>
+				</a>
+			</div>
+		</div>
+
+
+
+
+=======
 		<div class="item item-divider">
 			Restaurantes
 			</div>
@@ -63,6 +80,7 @@
 				</a>
 			</div>
 		</div>
+>>>>>>> c645edca20d1b0958850e5925fb12a7ad8499c9d
     </ion-list>
   </ion-content>
 </ion-view>

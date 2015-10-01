@@ -196,21 +196,74 @@ $scope.doRefresh = function(){
 
 
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+
+
+.controller('turismoController',function($scope){
+
+
+  $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
+  
+   $scope.rests  = $scope.rests.filter(function(data) {
+      return (data.types == 'Turismo');
+  });
+
+})
+/*
+<<<<<<< HEAD
+.controller('restsController',function($scope){
+
+
+  $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
+  
+   $scope.rests  = $scope.rests.filter(function(data) {
+      return (data.types == 'Restaurant');
+  });
+
+
 })
 
+.controller('turismoController',function($scope){
 
-.controller('restsController',function($scope,cargarMapa,$ionicModal){
+
+  $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
+  
+   $scope.rests  = $scope.rests.filter(function(data) {
+      return (data.types == 'Turismo');
+  });
+
+})
+
+/*
+.controller('restsController',function($scope,cargarMapa){
+
+  $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
+          $scope.reload = function(){
+            window.location.reload();
+          };
+
+      $scope.getAddress = function(address){
+        address = address.address;
+        cargarMapa.setDireccion(address);
+      }
+})
+*/
+
+.controller('restsController',function($scope,cargarMapa,$ionicModal,$stateParams){
+  
     $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
-        $scope.datos = {};
+    $scope.datos = {};
+
+    var type        = $stateParams.type;
+    $scope.seccion  = type;
+
+
+
+     $scope.rests  = $scope.rests.filter(function(data) {
+          return (data.types == type);
+      });
+
+
+console.log($scope.rests);
 
         $ionicModal.fromTemplateUrl('templates/modal.html', {
             scope: $scope,
@@ -232,6 +285,7 @@ $scope.doRefresh = function(){
         });
 
 
+   
     $scope.items = {
 
     };
@@ -242,10 +296,28 @@ $scope.doRefresh = function(){
         cargarMapa.setDireccion(address);
         window.location.reload();
     }
+  
+})
+
+.controller('restsController2',function($scope){
+    
+
+
+    $scope.datas = [
+      {type:'Cafeteria'},
+      {type:'Comidas para llevar'},
+      {type:'Pizzeria'},
+      {type:'Restaurant'},
+      {type:'Parrilla'},
+      {type:'Pub-Cerveceria'}
+
+    ]; 
+    
 
 })
 
 
+//>>>>>>> 8a0e0e80e68de39522239d82d85086487697ed79
 .controller('equiposController',function($scope, $http) {
     $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
 
@@ -257,6 +329,10 @@ $scope.doRefresh = function(){
 })
 
 
+/*
+.controller('PlaylistCtrl', function($scope, $stateParams,cargarMapa) {
+      var vm = this;
+*/
 //.controller('jugadoresController',function($scope, $stateParams){
 //
 // $scope.param = $stateParams.equiposId;
@@ -269,6 +345,7 @@ $scope.doRefresh = function(){
 //})
 
 
+//>>>>>>> 8a0e0e80e68de39522239d82d85086487697ed79
 .controller('jugadoresController',function($scope, $stateParams, $filter){
  
 var id_team = $stateParams.equiposId;
