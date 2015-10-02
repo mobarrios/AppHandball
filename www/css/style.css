@@ -87,16 +87,21 @@
 #sponsors{
     padding:0;
     width:100%;
-    margin-top:0;
+    margin-top: 0;
     /*min-height: 150px;*/
     height:100%;
     /*border-bottom: 25px solid #428368;*/
 }
 
+
+
 #sponsors #sponsorPpal{
-    border-bottom: 4px solid #428368;
     padding:0;
-    margin:0;
+    margin-top: -5px;
+}
+
+#sponsors .childInline{
+    margin-top:20px;
 }
 
 #sponsors .childInline>div{
@@ -369,9 +374,10 @@
     margin: 30px 0 0 0;
 }
 
-.novedades>h1 {
+.novedades>h1,#sponsors>h1 {
     background-color: #428368;
     padding: 10px 0;
     font-size:1.5em;
     color:white;
+    text-indent: 10px;
 }
