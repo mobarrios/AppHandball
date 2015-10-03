@@ -101,11 +101,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
+
+
+
     .state('app.playlists', {
-      url: '/playlists',
+      url: '/playlists/:id',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
+          templateUrl: 'templates/playlist.html',
           controller: 'PlaylistCtrl'
         }
       }
@@ -131,6 +134,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     }
   });
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
 });

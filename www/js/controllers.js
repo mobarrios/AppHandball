@@ -2,6 +2,7 @@ var app = angular.module('starter.controllers', ['ionic'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, $state) {
 
+/*
 $scope.update = function(){
 
  window.localStorage.removeItem('teams');
@@ -21,7 +22,25 @@ $scope.update = function(){
 
 
 };
+*/
+$scope.refreshTeams = function(){
+ 
+ window.localStorage.removeItem('teams');
 
+    $http.get('http://www.navcoder.net/sistemas/content/public/ws/teams/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==')
+    .success(function(response)
+    {
+     window.localStorage['teams'] = JSON.stringify(response); 
+    })
+    .finally(function(){
+      $scope.$broadcast('scroll.refreshComplete');
+            window.location.reload();
+
+    });
+
+
+
+};
 $scope.doRefresh = function(){
  
  window.localStorage.removeItem('restos');
@@ -304,7 +323,7 @@ console.log($scope.rests);
 
 
     $scope.datas = [
-      {type:'Cafeteria'},
+      {type:'Confiteria'},
       {type:'Comidas para llevar'},
       {type:'Pizzeria'},
       {type:'Restaurant'},
@@ -319,6 +338,7 @@ console.log($scope.rests);
 
 //>>>>>>> 8a0e0e80e68de39522239d82d85086487697ed79
 .controller('equiposController',function($scope, $http) {
+
     $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
 
 })
@@ -360,8 +380,21 @@ $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
 
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams,cargarMapa) {
-    var vm = this;
+.controller('PlaylistCtrl', function($scope, $stateParams, $filter) {
+    
+var id = $stateParams.id;
+
+$scope.rest = JSON.parse(window.localStorage['restos'] || '{}');
+
+
+ var a = $scope.rest.filter(function(data) {
+      return (data.id == id);
+  });
+
+$scope.rest  = a;
+
+console.log(a);
+/*    var vm = this;
 
     vm.direccion = cargarMapa.getDireccion();
 
@@ -374,4 +407,5 @@ $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
     $scope.reload = function(){
         window.location.reload();
     }
+  */
 });
