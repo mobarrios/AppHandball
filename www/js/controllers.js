@@ -237,32 +237,25 @@ $scope.doRefresh = function(){
 
 
 
-.controller('turismoController',function($scope){
+.controller('turismoController',function($scope,$ionicModal){
+        $ionicModal.fromTemplateUrl('templates/modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
+        $scope.openModal = function(rest) {
+            $scope.datos = rest;
+            $scope.modal.show();
 
-
-  $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
-  
-   $scope.rests  = $scope.rests.filter(function(data) {
-      return (data.types == 'Turismo');
-  });
-
-})
-/*
-<<<<<<< HEAD
-.controller('restsController',function($scope){
-
-
-  $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
-  
-   $scope.rests  = $scope.rests.filter(function(data) {
-      return (data.types == 'Restaurant');
-  });
-
-
-})
-
-.controller('turismoController',function($scope){
-
+        };
+        $scope.closeModal = function() {
+            $scope.modal.hide();
+        };
+        //Cleanup the modal when we're done with it!
+        $scope.$on('$destroy', function() {
+            $scope.modal.remove();
+        });
 
   $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
   
@@ -272,20 +265,6 @@ $scope.doRefresh = function(){
 
 })
 
-/*
-.controller('restsController',function($scope,cargarMapa){
-
-  $scope.rests = JSON.parse(window.localStorage['restos'] || '{}');
-          $scope.reload = function(){
-            window.location.reload();
-          };
-
-      $scope.getAddress = function(address){
-        address = address.address;
-        cargarMapa.setDireccion(address);
-      }
-})
-*/
 
 .controller('restsController',function($scope,cargarMapa,$ionicModal,$stateParams){
   
@@ -302,7 +281,6 @@ $scope.doRefresh = function(){
       });
 
 
-console.log($scope.rests);
 
         $ionicModal.fromTemplateUrl('templates/modal.html', {
             scope: $scope,
@@ -356,7 +334,6 @@ console.log($scope.rests);
 })
 
 
-//>>>>>>> 8a0e0e80e68de39522239d82d85086487697ed79
 .controller('equiposController',function($scope, $http) {
 
     $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
@@ -386,7 +363,25 @@ console.log($scope.rests);
 
 
 //>>>>>>> 8a0e0e80e68de39522239d82d85086487697ed79
-.controller('jugadoresController',function($scope, $stateParams, $filter){
+.controller('jugadoresController',function($scope, $stateParams, $filter,$ionicModal){
+        $ionicModal.fromTemplateUrl('templates/modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
+        $scope.openModal = function(rest) {
+            $scope.datos = rest;
+            $scope.modal.show();
+
+        };
+        $scope.closeModal = function() {
+            $scope.modal.hide();
+        };
+        //Cleanup the modal when we're done with it!
+        $scope.$on('$destroy', function() {
+            $scope.modal.remove();
+        });
  
 var id_team = $stateParams.equiposId;
 $scope.name = JSON.parse(window.localStorage['teams'] || '{}');

@@ -5097,9 +5097,9 @@ a.item-content {
   padding-top: 8px;
   padding-bottom: 8px;
   min-height: 30px;
-  border-color: #7EB94E !important;
-  background-color: #DCECD2 !important;;
-  color: black;
+  border-color: #4B7DB3 !important;
+  background-color: rgba(173, 173, 173, 0.19) !important;
+  color: #616161;
   font-weight: 500; }
 
 .platform-ios .item-divider-platform, .item-divider-ios {
