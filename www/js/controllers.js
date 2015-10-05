@@ -2,6 +2,26 @@ var app = angular.module('starter.controllers', ['ionic'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, $state) {
 
+
+
+function uploadPhoto(imageURI) {
+           
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+
+console.log(options);
+
+            var params = {};
+            params.value1 = "test";
+            params.value2 = "param";
+
+            options.params = params;
+
+            var ft = new FileTransfer();
+            ft.upload(imageURI, encodeURI("http://some.server.com/upload.php"), win, fail, options);
+        };
 /*
 $scope.update = function(){
 
@@ -26,7 +46,7 @@ $scope.update = function(){
 $scope.refreshTeams = function(){
  
  window.localStorage.removeItem('teams');
-
+this.uploadPhoto('http://www.navcoder.net/sistemas/content/public/uploads/teams/images/1443653333.jpg');
     $http.get('http://www.navcoder.net/sistemas/content/public/ws/teams/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==')
     .success(function(response)
     {
@@ -37,10 +57,10 @@ $scope.refreshTeams = function(){
             window.location.reload();
 
     });
-
-
-
 };
+
+
+
 $scope.doRefresh = function(){
  
  window.localStorage.removeItem('restos');
