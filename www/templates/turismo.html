@@ -14,17 +14,15 @@
 	</div>
 	
         <div class="list">
-
-			<a  ng-repeat="turismo in rests | filter:search" class="item item-thumbnail-left restaurant" href="#/app/playlists/{{turismo.id}}">
-				<img src="http://www.navcoder.net/sistemas/content/public/{{turismo.imagen[0]}}">
+			<div ng-repeat="turismo in rests | filter:search" class="item item-thumbnail-left restaurant">
+				<img src="http://www.navcoder.net/sistemas/content/public/{{turismo.imagen[0]}}" ng-click="openModal(turismo)">
+				<a href="#/app/playlists/{{turismo.id}}">
 					<h2>{{turismo.name}}</h2>
 					<p>{{turismo.address}}</p>
 					<p>{{turismo.tel}}</p>
-			</a>
+				</a>
+			</div>
 	 	</div>
-
-
-	
 
     </ion-list>
   </ion-content>

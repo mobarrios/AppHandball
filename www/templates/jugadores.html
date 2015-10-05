@@ -2,17 +2,14 @@
   <ion-content>
     <h3>{{jugadores[0].name}}</h3>
 
-
     <div ng-repeat="value in jugadores"  class="list">
-
-    <a ng-repeat=" jugador in value.players" class="item item-avatar" >
-      <img src="http://www.navcoder.net/sistemas/content/public/{{jugador.foto}}">
-      <h2>{{jugador.name}}</h2>
-      <p>{{jugador.last_name}}</p>
-    </a>
-
-
-
-</div>
+      <div ng-repeat="jugador in value.players" class="item item-thumbnail-left restaurant">
+        <img src="http://www.navcoder.net/sistemas/content/public/{{jugador.foto}}" ng-click="openModal(jugador)">
+        <a href="">
+          <h2>{{jugador.name}}</h2>
+          <p>{{jugador.last_name}}</p>
+        </a>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
