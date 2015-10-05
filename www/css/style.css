@@ -113,13 +113,14 @@
     margin-top:20px;
 }
 
-#sponsors .childInline>div{
-    width:120px;
-}
-
 
 .childInline>div{
     display: inline-block;
+}
+
+.childInline>div img{
+    width:100px;
+    border-radius:inherit;
 }
 
 .redes{
@@ -397,7 +398,7 @@
 
 
 .novedades{
-    margin: 30px 0 0 0;
+    margin: 10px 0 0 0;
 }
 
 .novedades>h1,#sponsors>h1 {
