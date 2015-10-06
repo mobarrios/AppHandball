@@ -126,6 +126,7 @@
 .redes{
     height: 50px;
     text-align: center;
+    z-index: 6000000000000000 !important;
 }
 
 .facebook,
