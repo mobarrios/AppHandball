@@ -161,6 +161,9 @@
 }
 
 
+#textoHTML>*{
+    font-size:1.2em !important;
+}
 
 
 /*--------------------         RESTAURANTES         -------------------*/
@@ -171,7 +174,7 @@
 
 #restDescript p{
     position: relative;
-    padding-left:34px;
+    padding-left:50px;
     margin-top:15px;
     padding-bottom: 5px;
     border-bottom: 1px solid #ddd;

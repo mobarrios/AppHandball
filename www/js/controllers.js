@@ -428,7 +428,7 @@ $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
  $scope.jugadores = a;
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams, $filter) {
+.controller('PlaylistCtrl', function($scope, $stateParams, $filter,cargarMapa) {
     
 var id = $stateParams.id;
 
@@ -447,7 +447,7 @@ $scope.rest  = a;
 $scope.myHTML = html[0].promos;
 
 
-/*    var vm = this;
+      var vm = this;
 
     vm.direccion = cargarMapa.getDireccion();
 
@@ -460,5 +460,5 @@ $scope.myHTML = html[0].promos;
     $scope.reload = function(){
         window.location.reload();
     }
-  */
+
 });

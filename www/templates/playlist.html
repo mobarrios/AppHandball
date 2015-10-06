@@ -2,32 +2,32 @@
     <ion-content>
 <div class="list card">
   <div class="item ">
-    <h2>{{rest[0].name}}</h2>
-    <p>{{rest[0].type}}</p>
+    <h2>{{rest.name}}</h2>
+    <p>{{rest.type}}</p>
   </div>
 
   <div class="item item-body">
 
     <p>
     <i class="icon icon2-address"></i>
-    {{rest[0].address}}
+    {{rest.address}}
     </p>
 
     <p>
     <i class="icon icon2-phone-outline"></i>
-    {{rest[0].phone}}
+    {{rest.phone}}
     </p>
 
     <p>
         <i class="icon icon2-globe"></i>
-        <a href="{{rest[0].web}}" style="width: 80%;display:inline-block;vertical-align:top;">{{rest[0].web}}</a>
+        <a href="{{rest.web}}" style="width: 80%;display:inline-block;vertical-align:top;">{{rest.web}}</a>
     </p>
 
- <p ng-bind-html="myHTML"></p>
+ <p ng-bind-html="myHTML" id="textoHTML"></p>
             
     
 
-    <p ng-repeat='img in rest[0].imagen '>
+    <p ng-repeat='img in rest.imagen '>
        <img class="full-image"  src="http://www.navcoder.net/sistemas/content/public/{{img}}">
     </p>
     
