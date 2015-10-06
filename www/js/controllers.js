@@ -160,7 +160,7 @@ $scope.doRefresh = function(){
                 return direccion;
             },
             setMapa : function () {
-                
+
                     var map = new google.maps.Map(document.getElementById('maps'), {
                         zoom: 16
                     });
