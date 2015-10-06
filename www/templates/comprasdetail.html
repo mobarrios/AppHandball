@@ -1,0 +1,15 @@
+<ion-view view-title="{{seccion}}">
+  <ion-content>
+   
+  	<div class="list">
+    <a ng-repeat="rest in data" class="item item-thumbnail-left" href="#/app/playlists/{{rest.id}}">
+     <img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}">
+     <h2>{{rest.name}}</h2>
+	 <p>{{rest.address}}</p>
+	 <p>{{rest.tel}}</p>
+     <i class="icon ion-arrow-right-c"></i>
+    </a>
+    </div>
+
+  </ion-content>
+</ion-view>
