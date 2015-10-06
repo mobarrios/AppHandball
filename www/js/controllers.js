@@ -369,10 +369,36 @@ $scope.doRefresh = function(){
 
 })
 
-.controller('estadiosController',function($scope, $http) {
+.controller('estadiosController',function($scope, $http,cargarMapa) {
+        $scope.getAddress = function(restaurant){
+            window.localStorage['restaurant'] = angular.toJson(restaurant);
+            address = restaurant.address;
+            cargarMapa.setDireccion(address);
+            window.location.reload();
+        };
 
-    $scope.seccion  = 'Estadios'; 
+
+    $scope.seccion  = 'Estadios';
     $scope.estadios = JSON.parse(window.localStorage['estadios'] || '{}');
+
+})
+
+.controller('estadiosDetailController',function($scope, $http,cargarMapa) {
+        var vm = this;
+
+        vm.direccion = cargarMapa.getDireccion();
+
+        vm.mapa = cargarMapa.setMapa(vm.direccion);
+
+        $scope.map = vm.mapa;
+
+        $scope.rest = angular.fromJson(window.localStorage['restaurant']);
+
+        $scope.reload = function(){
+            window.location.reload();
+        };
+
+        $scope.estadio = angular.fromJson(window.localStorage['restaurant']);
 
 })
 

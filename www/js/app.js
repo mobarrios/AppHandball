@@ -65,6 +65,16 @@ angular.module('starter', ['ionic', 'starter.controllers','ngSanitize'])
     }
   })
 
+.state('app.estadiosDetail', {
+    url: '/estadios/detail',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/estadiosDetail.html',
+         controller: 'estadiosDetailController'
+      }
+    }
+  })
+
 
   .state('app.rests', {
     url: '/rests',
