@@ -426,7 +426,6 @@ $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
   });
 
  $scope.jugadores = a;
-
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams, $filter) {

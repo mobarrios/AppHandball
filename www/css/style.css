@@ -421,3 +421,38 @@
     font-size: .5em !important;
     color: rgb(75, 125, 179) !important;
 }
+
+
+/*--------------------         JUGADORES         -------------------*/
+#escudo{
+    width: 100vw;
+    text-align: center;
+}
+
+#escudo>img{
+    height:80px;
+}
+
+#escudo>img:after{
+    content:"";
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
