@@ -360,17 +360,16 @@ $scope.doRefresh = function(){
 
 .controller('comprasdetailController',function($scope, $http, $stateParams) {
 
-alert('das¡a');
 
   $scope.name = JSON.parse(window.localStorage['restos'] || '{}');
+  $scope.seccion = $stateParams.type;
 
   var a = $scope.name.filter(function(data) {
-      return (data.type == $stateParams.type);
+      return (data.types == $stateParams.type);
   });
 
 $scope.data = a;
 
-console.log(a);
 
 })
 
