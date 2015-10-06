@@ -376,6 +376,17 @@ $scope.doRefresh = function(){
 
 })
 
+.controller('fixtureController',function($scope, $http) {
+
+$scope.fixtures = [
+{name:'Masculino'},
+{name:'Femenino'}
+];
+   // $scope.seccion  = 'Estadios'; 
+   // $scope.estadios = JSON.parse(window.localStorage['estadios'] || '{}');
+
+})
+
 
 .controller('comprasController',function($scope, $http) {
 

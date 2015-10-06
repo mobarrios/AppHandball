@@ -1,0 +1,18 @@
+<ion-view view-title="Fixture">
+  <ion-content>
+   
+  <ion-refresher
+    pulling-text="Presionar par Actulizar..."
+    on-refresh="refreshTeams()">
+  </ion-refresher>
+
+
+    <div class="list-card">
+      <a ng-repeat="fixture in fixtures " class="item " href="#/app/jugadores/{{equipo.id}}">
+       {{fixture.name}} 
+      </a>
+    </div>
+  
+
+  </ion-content>
+</ion-view>
