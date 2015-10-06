@@ -45,6 +45,25 @@ angular.module('starter', ['ionic', 'starter.controllers','ngSanitize'])
 
     })
 
+.state('app.fixture', {
+    url: '/fixture',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/fixture.html',
+         controller: 'fixtureController'
+      }
+    }
+  })
+
+.state('app.estadios', {
+    url: '/estadios',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/estadios.html',
+         controller: 'estadiosController'
+      }
+    }
+  })
 
 
   .state('app.rests', {
