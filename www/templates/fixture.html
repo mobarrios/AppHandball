@@ -1,18 +1,29 @@
 <ion-view view-title="Fixture">
   <ion-content>
    
-  <ion-refresher
-    pulling-text="Presionar par Actulizar..."
-    on-refresh="refreshTeams()">
-  </ion-refresher>
+ 
 
-
-    <div class="list-card">
-      <a ng-repeat="fixture in fixtures " class="item " href="#/app/jugadores/{{equipo.id}}">
-       {{fixture.name}} 
-      </a>
-    </div>
+    
   
+<ion-slide-box >
+    <ion-slide>
+      <img src="img/fixture/1.jpg" width="100%">
+    </ion-slide>
+    <ion-slide>
+     <img src="img/fixture/2.jpg" width="100%">
+    </ion-slide>
+    <ion-slide>
+      <img src="img/fixture/3.jpg" width="100%">
+    </ion-slide>
+     <ion-slide>
+      <img src="img/fixture/4.jpg" width="100%">
+    </ion-slide>
+     <ion-slide>
+      <img src="img/fixture/5.jpg" width="100%">
+    </ion-slide>
+
+  </ion-slide-box>
+
 
   </ion-content>
 </ion-view>

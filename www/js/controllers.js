@@ -63,6 +63,21 @@ $scope.refreshEstadios = function(){
 };
 
 
+$scope.refreshTorneos = function(){
+ 
+ window.localStorage.removeItem('torneos');
+
+    $http.get('http://www.navcoder.net/sistemas/content/public/ws/torneos/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==')
+    .success(function(response)
+    {
+     window.localStorage['torneos'] = JSON.stringify(response); 
+    })
+    .finally(function(){
+      $scope.$broadcast('scroll.refreshComplete');
+            window.location.reload();
+
+    });
+};
 
 $scope.refreshTeams = function(){
  
@@ -378,12 +393,9 @@ $scope.doRefresh = function(){
 
 .controller('fixtureController',function($scope, $http) {
 
-$scope.fixtures = [
-{name:'Masculino'},
-{name:'Femenino'}
-];
-   // $scope.seccion  = 'Estadios'; 
-   // $scope.estadios = JSON.parse(window.localStorage['estadios'] || '{}');
+
+   $scope.seccion  = 'Fixtures'; 
+   $scope.fixtures = JSON.parse(window.localStorage['torneos'] || '{}');
 
 })
 
