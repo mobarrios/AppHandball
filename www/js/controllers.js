@@ -46,6 +46,23 @@ $scope.refreshExcursiones = function(){
     });
 };
 
+$scope.refreshEstadios = function(){
+ 
+ window.localStorage.removeItem('estadios');
+
+    $http.get('http://www.navcoder.net/sistemas/content/public/ws/stadiums/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==')
+    .success(function(response)
+    {
+     window.localStorage['estadios'] = JSON.stringify(response); 
+    })
+    .finally(function(){
+      $scope.$broadcast('scroll.refreshComplete');
+            window.location.reload();
+
+    });
+};
+
+
 
 $scope.refreshTeams = function(){
  
@@ -351,6 +368,14 @@ $scope.doRefresh = function(){
     $scope.name = JSON.parse(window.localStorage['excursiones'] || '{}');
 
 })
+
+.controller('estadiosController',function($scope, $http) {
+
+    $scope.seccion  = 'Estadios'; 
+    $scope.estadios = JSON.parse(window.localStorage['estadios'] || '{}');
+
+})
+
 
 .controller('comprasController',function($scope, $http) {
 

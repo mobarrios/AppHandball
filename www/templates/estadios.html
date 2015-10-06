@@ -1,0 +1,21 @@
+<ion-view view-title="{{seccion}}">
+  <ion-content>
+
+	<ion-refresher
+    pulling-text="Presionar par Actulizar..."
+    on-refresh="refreshEstadios()">
+  </ion-refresher>
+
+		<div class="list">
+
+		    <a ng-repeat="estadio in estadios" class="item item-thumbnail-left" href="#">
+		      <img src="http://www.navcoder.net/sistemas/content/public/{{estadio.imagen[0]}}">
+		      <h2>{{estadio.name}}</h2>
+		      <p>{{estadio.address}}</p>
+		    </a>
+		</div>
+
+
+
+  </ion-content>
+</ion-view>
