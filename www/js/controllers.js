@@ -368,8 +368,7 @@ $scope.doRefresh = function(){
       return (data.types == $stateParams.type);
   });
 
-$scope.data = a;
-
+  $scope.data = a;
 
 })
 
