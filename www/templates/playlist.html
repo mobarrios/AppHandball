@@ -1,31 +1,53 @@
-<div class="list">
+<ion-view view-title>
     <ion-content>
+<div class="list card">
+  <div class="item ">
+    <h2>{{rest[0].name}}</h2>
+    <p>{{rest[0].type}}</p>
+  </div>
 
-        <div class="item item-avatar" id="restDescript">
-            <img src="http://www.navcoder.net/sistemas/content/public/{{rest[0].imagen[0]}}">
-            <h2>{{rest[0].name}}<small>{{rest[0].type}}</small></h2>
-            <p>
-                <i class="icon ion-location icon-right"></i>
-                {{rest[0].address}}
-            </p>
-            <p>
-                <i class="icon ion-android-call icon-right"></i>
-                {{rest[0].phone}}
-            </p>
-            <p>
-                <i class="icon ion-ios-world-outline icon-right"></i>
-                <a href="http://www.nombre@dominio.com">{{rest[0].phone}}</a>
-            </p>
-        </div>
+  <div class="item item-body">
 
-        <div class="item item-image" id="mapa">
-            <div id="maps"></div>
-        </div>
+    <p>
+    <i class="icon icon-location"></i>
+    {{rest[0].address}}
+    </p>
 
-        <a class="item item-icon-left ruta" href="#/app/map" ng-click="reload()">
-            <i class="icon ion-android-locate calm"></i>
-            <h2>¿Cómo llegar?</h2>
-            <p>Desde mi ubicación actual</p>
-        </a>
+    <p>
+    <i class="icon ionic-android icon-phone"></i>
+    {{rest[0].phone}}
+    </p>
+
+    <p>
+        <i class="icon icon-right"></i>
+        <a href="{{rest[0].web}}">{{rest[0].web}}</a>
+    </p>
+
+ <p ng-bind-html="myHTML"></p>
+            
+    
+
+    <p ng-repeat='img in rest[0].imagen '>
+       <img class="full-image"  src="http://www.navcoder.net/sistemas/content/public/{{img}}">
+    </p>
+    
+  </div>
+
+ 
+    <div class="item item-image" id="mapa">
+        <div id="maps"></div>
+    </div>
+
+    <a class="item item-icon-left ruta" href="#/app/map" ng-click="reload()">
+        <i class="icon ion-android-locate calm"></i>
+        <h2>¿Cómo llegar?</h2>
+        <p>Desde mi ubicación actual</p>
+    </a>
+
+    </div>
+
+
+
+        
     </ion-content>
 </div>

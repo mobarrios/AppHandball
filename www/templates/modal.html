@@ -5,11 +5,13 @@
         </div>
         <ion-scroll zooming="true" direction="xy" id="cont">
             <div id="contenedor">
-                <img src="http://www.navcoder.net/sistemas/content/public/{{datos.imagen[0]}}" alt="{{datos.name}}">
+                <img src="http://www.navcoder.net/sistemas/content/public/{{datos[0].foto}}" alt="{{datos.name}}">
             </div>
         </ion-scroll>
     </ion-content>
     <div class="bar bar-footer">
+
         <h1>{{datos.name}}</h1>
+        
     </div>
 </ion-modal-view>

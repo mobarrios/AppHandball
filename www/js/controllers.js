@@ -3,25 +3,6 @@ var app = angular.module('starter.controllers', ['ionic'])
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, $state) {
 
 
-
-function uploadPhoto(imageURI) {
-           
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
-
-console.log(options);
-
-            var params = {};
-            params.value1 = "test";
-            params.value2 = "param";
-
-            options.params = params;
-
-            var ft = new FileTransfer();
-            ft.upload(imageURI, encodeURI("http://some.server.com/upload.php"), win, fail, options);
-        };
 /*
 $scope.update = function(){
 
@@ -43,10 +24,33 @@ $scope.update = function(){
 
 };
 */
+$scope.renderHtml = function(data){
+
+    return $scope.myHTML = data;
+
+  };
+
+$scope.refreshExcursiones = function(){
+ 
+ window.localStorage.removeItem('excursiones');
+
+    $http.get('http://www.navcoder.net/sistemas/content/public/ws/excursions/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==')
+    .success(function(response)
+    {
+     window.localStorage['excursiones'] = JSON.stringify(response); 
+    })
+    .finally(function(){
+      $scope.$broadcast('scroll.refreshComplete');
+            window.location.reload();
+
+    });
+};
+
+
 $scope.refreshTeams = function(){
  
  window.localStorage.removeItem('teams');
-this.uploadPhoto('http://www.navcoder.net/sistemas/content/public/uploads/teams/images/1443653333.jpg');
+
     $http.get('http://www.navcoder.net/sistemas/content/public/ws/teams/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==')
     .success(function(response)
     {
@@ -340,6 +344,36 @@ $scope.doRefresh = function(){
 
 })
 
+.controller('excursionesController',function($scope, $http) {
+
+    $scope.seccion  = 'Excursiones'; 
+    $scope.name = JSON.parse(window.localStorage['excursiones'] || '{}');
+
+})
+
+.controller('comprasController',function($scope, $http) {
+
+    $scope.seccion  = 'Compras'; 
+   // $scope.name = JSON.parse(window.localStorage['excursiones'] || '{}');
+
+})
+
+.controller('comprasdetailController',function($scope, $http, $stateParams) {
+
+alert('das¡a');
+
+  $scope.name = JSON.parse(window.localStorage['restos'] || '{}');
+
+  var a = $scope.name.filter(function(data) {
+      return (data.type == $stateParams.type);
+  });
+
+$scope.data = a;
+
+console.log(a);
+
+})
+
 .controller('mapController',function($scope,cargarRuta){
         $scope.rest = angular.fromJson(cargarRuta.getRestaurant());
         $scope.map = cargarRuta.loadRoute();
@@ -406,9 +440,14 @@ $scope.rest = JSON.parse(window.localStorage['restos'] || '{}');
       return (data.id == id);
   });
 
-$scope.rest  = a;
+ var html = $scope.rest.filter(function(data) {
+      return (data.id == id);
+  });
 
-console.log(a);
+$scope.rest  = a;
+$scope.myHTML = html[0].promos;
+
+
 /*    var vm = this;
 
     vm.direccion = cargarMapa.getDireccion();

@@ -5,7 +5,6 @@
           <i class="icon ion-ios-search placeholder-icon"></i>
           <input type="search" placeholder="Buscar"  ng-model="search">
 		</label>
-<<<<<<< HEAD
 		</div>
     
   <ion-refresher
@@ -13,10 +12,7 @@
     on-refresh="refreshTeams()">
   </ion-refresher>
 
-=======
-	</div>
->>>>>>> 95768ea2c6ceb32ff075021a2da02663ea0317ac
-
+	
     <div class="list">
       <a ng-repeat="equipo in name | filter:search" class="item item-avatar item-icon-right" href="#/app/jugadores/{{equipo.id}}">
         <img src="http://www.navcoder.net/sistemas/content/public/{{equipo.escudo}}">
@@ -26,5 +22,6 @@
         </div>
       </a>
     </div>
+    
   </ion-content>
 </ion-view>

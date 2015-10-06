@@ -1,0 +1,33 @@
+<ion-view view-title="Excursiones">
+  <ion-content>
+    <ion-list>
+
+<ion-refresher
+    pulling-text="Presionar par Actulizar..."
+    on-refresh="refreshExcursiones()">
+  </ion-refresher>
+  <h4>{{seccion}}</h4>
+
+<div ng-repeat="rest in name"  class="list card">
+
+  <div class="item">
+    <h2><strong>{{rest.name}}</strong></h2>
+  </div>
+
+  <div class="item item-body">
+  
+  <p ng-bind-html="renderHtml(rest.description)">
+
+    </p>
+   <img class="full-image" ng-repeat="img in rest.imagen" src="http://www.navcoder.net/sistemas/content/public/{{img}}">
+  </div>
+
+</div>
+
+
+
+
+
+
+  </ion-content>
+</ion-view>

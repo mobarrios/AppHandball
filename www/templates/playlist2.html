@@ -1,11 +1,31 @@
+<div class="list">
+    <ion-content>
 
+        <div class="item item-avatar" id="restDescript">
+            <img src="http://www.navcoder.net/sistemas/content/public/{{rest[0].imagen[0]}}">
+            <h2>{{rest[0].name}}<small>{{rest[0].type}}</small></h2>
+            <p>
+                <i class="icon ion-location icon-right"></i>
+                {{rest[0].address}}
+            </p>
+            <p>
+                <i class="icon ion-android-call icon-right"></i>
+                {{rest[0].phone}}
+            </p>
+            <p>
+                <i class="icon ion-ios-world-outline icon-right"></i>
+                <a href="http://www.nombre@dominio.com">{{rest[0].phone}}</a>
+            </p>
+        </div>
 
-<ion-view view-title="Playlist">
-  <ion-content>
-    <h1>Playlist</h1>
-  </ion-content>
+        <div class="item item-image" id="mapa">
+            <div id="maps"></div>
+        </div>
 
-</ion-view>
-
-
-
+        <a class="item item-icon-left ruta" href="#/app/map" ng-click="reload()">
+            <i class="icon ion-android-locate calm"></i>
+            <h2>¿Cómo llegar?</h2>
+            <p>Desde mi ubicación actual</p>
+        </a>
+    </ion-content>
+</div>

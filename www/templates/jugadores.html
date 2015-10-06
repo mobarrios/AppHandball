@@ -3,26 +3,21 @@
     <h3>{{jugadores[0].name}}</h3>
 
     <div ng-repeat="value in jugadores"  class="list">
-<<<<<<< HEAD
 
-    <a ng-repeat="jugador in value.players" class="item item-avatar" >
-      <img src="http://www.navcoder.net/sistemas/content/public/{{jugador[0].foto}}">
-      <h2>{{jugador.name}}</h2>
-      <p>{{jugador.last_name}}</p>
-    </a>
-
-
-
-</div>
-=======
       <div ng-repeat="jugador in value.players" class="item item-thumbnail-left restaurant">
-        <img src="http://www.navcoder.net/sistemas/content/public/{{jugador.foto}}" ng-click="openModal(jugador)">
+  
+            <img ng-if="jugador[0].foto == null " src="img/user.png" ng-click="openModal(jugador)">
+           
+            <img ng-if="jugador[0].foto != null " src="http://www.navcoder.net/sistemas/content/public/{{jugador[0].foto}}" ng-click="openModal(jugador)">
+
+
+
         <a href="">
           <h2>{{jugador.name}}</h2>
           <p>{{jugador.last_name}}</p>
         </a>
       </div>
     </div>
->>>>>>> 95768ea2c6ceb32ff075021a2da02663ea0317ac
+
   </ion-content>
 </ion-view>
