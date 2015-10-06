@@ -250,6 +250,7 @@ $scope.doRefresh = function(){
         });
         $scope.openModal = function(rest) {
             $scope.datos = rest;
+            console.log($scope.datos);
             $scope.modal.show();
 
         };
@@ -424,7 +425,6 @@ $scope.name = JSON.parse(window.localStorage['teams'] || '{}');
   });
 
  $scope.jugadores = a;
-
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams, $filter) {

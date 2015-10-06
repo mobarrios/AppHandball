@@ -5,7 +5,9 @@
         </div>
         <ion-scroll zooming="true" direction="xy" id="cont">
             <div id="contenedor">
-                <img src="http://www.navcoder.net/sistemas/content/public/{{datos[0].foto}}" alt="{{datos.name}}">
+                <img ng-if="datos[0].foto != null " src="http://www.navcoder.net/sistemas/content/public/{{datos[0].foto}}" alt="{{datos.name}}">
+                {{datos[0].imagen}}
+                <img ng-if="datos.imagen[0] != null " src="http://www.navcoder.net/sistemas/content/public/{{datos.imagen[0]}}" alt="{{datos.name}}">
             </div>
         </ion-scroll>
     </ion-content>

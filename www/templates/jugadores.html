@@ -1,12 +1,14 @@
 <ion-view view-title="Jugadores">
   <ion-content>
-    <h3>{{jugadores[0].name}}</h3>
+    <div id="escudo">
+      <img src="http://www.navcoder.net/sistemas/content/public/{{jugadores[0].escudo}}" alt="escudo">
+    </div>
 
     <div ng-repeat="value in jugadores"  class="list">
 
       <div ng-repeat="jugador in value.players" class="item item-thumbnail-left restaurant">
   
-            <img ng-if="jugador[0].foto == null " src="img/user.png" ng-click="openModal(jugador)">
+            <img ng-if="jugador[0].foto == null " src="img/default.png" ng-click="openModal(jugador)">
            
             <img ng-if="jugador[0].foto != null " src="http://www.navcoder.net/sistemas/content/public/{{jugador[0].foto}}" ng-click="openModal(jugador)">
 
