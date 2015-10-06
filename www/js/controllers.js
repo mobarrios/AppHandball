@@ -63,6 +63,21 @@ $scope.refreshEstadios = function(){
 };
 
 
+$scope.refreshTorneos = function(){
+ 
+ window.localStorage.removeItem('torneos');
+
+    $http.get('http://www.navcoder.net/sistemas/content/public/ws/torneos/eyJpdiI6IlFhZjBSVTlKVXVuUDliR3pISGtoeWc9PSIsInZhbHVlIjoiRUh2TU1mVUxyZGV5Vmh2V29NblJiYURGbVREaXFSN3VCeisyQWpGaHBUNGxGdmRGZ3NmVGdaMWVtUmhXaVZPOSIsIm1hYyI6IjQxMjBhMzZjNmNlY2FmZjU0OGZlNmQzNWMwNTEzYzBhYjQ1ZDYzNDkxZWRkNjBjY2UzOGQ5ODFlM2U0NWZhZjAifQ==')
+    .success(function(response)
+    {
+     window.localStorage['torneos'] = JSON.stringify(response); 
+    })
+    .finally(function(){
+      $scope.$broadcast('scroll.refreshComplete');
+            window.location.reload();
+
+    });
+};
 
 $scope.refreshTeams = function(){
  
@@ -383,22 +398,31 @@ $scope.doRefresh = function(){
 
 })
 
+
 .controller('estadiosDetailController',function($scope, $http,cargarMapa) {
-        var vm = this;
+            var vm = this;
 
-        vm.direccion = cargarMapa.getDireccion();
+            vm.direccion = cargarMapa.getDireccion();
 
-        vm.mapa = cargarMapa.setMapa(vm.direccion);
+            vm.mapa = cargarMapa.setMapa(vm.direccion);
 
-        $scope.map = vm.mapa;
+            $scope.map = vm.mapa;
 
-        $scope.rest = angular.fromJson(window.localStorage['restaurant']);
+            $scope.rest = angular.fromJson(window.localStorage['restaurant']);
 
-        $scope.reload = function(){
-            window.location.reload();
-        };
+            $scope.reload = function () {
+                window.location.reload();
+            };
 
-        $scope.estadio = angular.fromJson(window.localStorage['restaurant']);
+            $scope.estadio = angular.fromJson(window.localStorage['restaurant']);
+        })
+
+.controller('fixtureController',function($scope, $http) {
+
+
+   $scope.seccion  = 'Fixtures'; 
+   $scope.fixtures = JSON.parse(window.localStorage['torneos'] || '{}');
+
 
 })
 
