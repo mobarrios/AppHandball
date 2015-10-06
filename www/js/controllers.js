@@ -250,6 +250,7 @@ $scope.doRefresh = function(){
         });
         $scope.openModal = function(rest) {
             $scope.datos = rest;
+            console.log($scope.datos);
             $scope.modal.show();
 
         };

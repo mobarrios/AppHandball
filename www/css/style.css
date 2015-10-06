@@ -154,7 +154,7 @@
     background: rgb(221, 75, 57) !important;
 }
 /*--------------------         MENU         -------------------*/
-#menuLat .icon:before{
+#menuLat .icon:before,.item>.icon:before{
     font-size: 1.5em !important;
     color: rgb(75, 125, 179) !important;
     margin-right: 20px;
@@ -427,18 +427,33 @@
 #escudo{
     width: 100vw;
     text-align: center;
+    margin-top:5px;
+    height: 80px;
 }
 
 #escudo>img{
     height:80px;
+    width: auto;
 }
 
-#escudo>img:after{
+#escudo:after{
     content:"";
-    
+    border-top:2px solid #4B7DB3;
+    display:inline-block;
+    width: 30%;
+    height: 40px;
+    /*margin-top:40px;*/
+    vertical-align: middle;
 }
 
-
+#escudo:before{
+    content:"";
+    border-top:2px solid #4B7DB3;
+    display:inline-block;
+    width: 30%;
+    height: 40px;
+    vertical-align: middle;
+}
 
 
 
