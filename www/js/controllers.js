@@ -518,12 +518,10 @@ $scope.myHTML = html[0].promos;
 
     $scope.rest = angular.fromJson(window.localStorage['restaurant']);
 
-<<<<<<< HEAD
     $scope.reload = function(){
         window.location.reload();
     }
 
+
+
 });
-=======
-});
->>>>>>> 5b7bb5925282feec84decdfb1b8eb206e510ccbf
