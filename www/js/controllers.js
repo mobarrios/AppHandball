@@ -166,7 +166,7 @@ $scope.doRefresh = function(){
                 return direccion;
             },
             setMapa : function () {
-                google.maps.event.addDomListener(window, 'load', function() {
+                
                     var map = new google.maps.Map(document.getElementById('maps'), {
                         zoom: 16
                     });
@@ -189,7 +189,7 @@ $scope.doRefresh = function(){
                         });
                     }
                     return map;
-                });
+
             }
         };
 
@@ -204,7 +204,7 @@ $scope.doRefresh = function(){
                 return restaurant;
             },
             loadRoute : function(){
-                google.maps.event.addDomListener(window, 'load', function() {
+
                     var directionsDisplay;
 
                     var directionsService;
@@ -262,7 +262,7 @@ $scope.doRefresh = function(){
                         });
 
                     });
-                });
+
                     return map;
             }
         };
@@ -348,7 +348,7 @@ $scope.doRefresh = function(){
         window.localStorage['restaurant'] = angular.toJson(restaurant);
         address = restaurant.address;
         cargarMapa.setDireccion(address);
-        window.location.reload();
+        //window.location.reload();
     }
   
 })
@@ -389,7 +389,6 @@ $scope.doRefresh = function(){
             window.localStorage['restaurant'] = angular.toJson(restaurant);
             address = restaurant.address;
             cargarMapa.setDireccion(address);
-            window.location.reload();
         };
 
 
@@ -407,12 +406,6 @@ $scope.doRefresh = function(){
             vm.mapa = cargarMapa.setMapa(vm.direccion);
 
             $scope.map = vm.mapa;
-
-            $scope.rest = angular.fromJson(window.localStorage['restaurant']);
-
-            $scope.reload = function () {
-                window.location.reload();
-            };
 
             $scope.estadio = angular.fromJson(window.localStorage['restaurant']);
         })
@@ -530,9 +523,5 @@ $scope.myHTML = html[0].promos;
     $scope.map = vm.mapa;
 
     $scope.rest = angular.fromJson(window.localStorage['restaurant']);
-
-    $scope.reload = function(){
-        window.location.reload();
-    }
 
 });
