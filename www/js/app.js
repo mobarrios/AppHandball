@@ -54,6 +54,15 @@ angular.module('starter', ['ionic', 'starter.controllers','ngSanitize'])
       }
     }
   })
+.state('app.calendario', {
+    url: '/calendario',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/calendario.html',
+         //controller: 'calendariosController'
+      }
+    }
+  })
 
 .state('app.estadios', {
     url: '/estadios',
