@@ -267,7 +267,7 @@ $scope.doRefresh = function(){
 
 
 
-.controller('turismoController',function($scope,$ionicModal){
+.controller('turismoController',function($scope,$ionicModal,cargarMapa){
         $ionicModal.fromTemplateUrl('templates/modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -293,6 +293,12 @@ $scope.doRefresh = function(){
    $scope.rests  = $scope.rests.filter(function(data) {
       return (data.types == 'Turismo');
   });
+
+        $scope.getAddress = function(restaurant){
+            window.localStorage['restaurant'] = angular.toJson(restaurant);
+            address = restaurant.address;
+            cargarMapa.setDireccion(address);
+        }
 
 })
 
@@ -342,7 +348,6 @@ $scope.doRefresh = function(){
         window.localStorage['restaurant'] = angular.toJson(restaurant);
         address = restaurant.address;
         cargarMapa.setDireccion(address);
-        //window.location.reload();
     }
   
 })
@@ -418,10 +423,9 @@ $scope.doRefresh = function(){
 
     $scope.seccion  = 'Compras'; 
    // $scope.name = JSON.parse(window.localStorage['excursiones'] || '{}');
-
 })
 
-.controller('comprasdetailController',function($scope, $http, $stateParams) {
+.controller('comprasdetailController',function($scope, $http, $stateParams,cargarMapa) {
 
 
   $scope.name = JSON.parse(window.localStorage['restos'] || '{}');
@@ -432,6 +436,12 @@ $scope.doRefresh = function(){
   });
 
   $scope.data = a;
+
+        $scope.getAddress = function(restaurant){
+            window.localStorage['restaurant'] = angular.toJson(restaurant);
+            address = restaurant.address;
+            cargarMapa.setDireccion(address);
+        }
 
 })
 

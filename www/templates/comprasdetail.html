@@ -2,7 +2,7 @@
   <ion-content>
    
   	<div class="list">
-    <a ng-repeat="rest in data" class="item item-thumbnail-left" href="#/app/playlists/{{rest.id}}">
+    <a ng-repeat="rest in data" class="item item-thumbnail-left" href="#/app/playlists/{{rest.id}}" ng-click="getAddress(rest)">
      <img src="http://www.navcoder.net/sistemas/content/public/{{rest.imagen[0]}}">
      <h2>{{rest.name}}</h2>
 	 <p>{{rest.address}}</p>

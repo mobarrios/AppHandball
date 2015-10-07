@@ -16,7 +16,7 @@
         <div class="list">
 			<div ng-repeat="turismo in rests | filter:search" class="item item-thumbnail-left restaurant">
 				<img src="http://www.navcoder.net/sistemas/content/public/{{turismo.imagen[0]}}" ng-click="openModal(turismo)">
-				<a href="#/app/playlists/{{turismo.id}}">
+				<a href="#/app/playlists/{{turismo.id}}" ng-click="getAddress(turismo)">
 					<h2>{{turismo.name}}</h2>
 					<p>{{turismo.address}}</p>
 					<p>{{turismo.tel}}</p>
