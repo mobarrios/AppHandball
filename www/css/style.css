@@ -96,7 +96,7 @@
 #sponsors{
     padding:0;
     width:100%;
-    margin-top: 0;
+    margin-top: 50px;
     /*min-height: 150px;*/
     height:100%;
     /*border-bottom: 25px solid #428368;*/
@@ -127,6 +127,7 @@
     height: 50px;
     text-align: center;
     z-index: 6000000000000000 !important;
+    position:absolute;
 }
 
 .facebook,
