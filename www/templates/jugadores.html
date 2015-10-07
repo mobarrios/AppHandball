@@ -8,9 +8,9 @@
 
       <div ng-repeat="jugador in value.players" class="item item-thumbnail-left restaurant">
   
-            <img ng-if="jugador[0].foto == null " src="img/default.png">
+            <img ng-if="jugador.foto == null " src="img/default.png">
            
-            <img ng-if="jugador[0].foto != null " src="http://www.navcoder.net/sistemas/content/public/{{jugador[0].foto}}" ng-click="openModal(jugador)">
+            <img ng-if="jugador.foto != null " src="http://www.navcoder.net/sistemas/content/public/{{jugador.foto}}" ng-click="openModal(jugador)">
 
 
 
